@@ -1,43 +1,37 @@
-# 권현재 백엔드 개발자 포트폴리오
+# 권현재 Java/Spring 백엔드 포트폴리오
 
 ### [GitHub Pages에서 포트폴리오 바로 보기](https://hyunjaegit.github.io/portfoliopdf/)
 
 [GitHub 저장소](https://github.com/HyunJaeGit/portfoliopdf)
 
-Java와 Spring을 중심으로 한 백엔드 개발자 포트폴리오 사이트입니다. Aura3D 3D 모니터링 도구와 MZ 전국 맛집 정보 플랫폼에서 직접 구현한 범위, 설계 판단과 동작 결과를 기술 사례집 형태로 정리했습니다.
+Java/Spring 백엔드 개발자 권현재의 기술 사례집형 포트폴리오입니다. Aura3D와 MZ 전국 맛집 정보 플랫폼에서 직접 구현한 백엔드 구조, 데이터 처리와 AI API 연동 경험을 실제 개발 화면과 함께 정리했습니다.
 
-## 주요 페이지
+## 대표 프로젝트
 
-- 홈: 목표 직무, 핵심 역량과 대표 프로젝트 요약
-- 이력서: 경력, 교육, 기술, 프로젝트와 AI 활용 경험
-- 포트폴리오: Aura3D와 MZ 프로젝트 목차
-- Aura3D: 사용자 요청 기반 스캔, 상태 전이 기반 AI 가이드와 3D 시각화
-- MZ: 전국 맛집 복합 검색, Kakao 지도 연동과 AWS 배포
+### Aura3D
+
+URL 상태 관제와 3D 시각화, Gemini 대응 가이드를 연결한 개인 프로젝트입니다.
+
+- Java 21 Virtual Thread·TaskScheduler 기반 동적 스캔 제어
+- JPA·MySQL 기반 모니터링 상태와 AI 가이드 이력 영속화
+- 상태 전이 기반 Gemini 호출 제어로 호출량 약 90% 감소와 토큰 사용 절감
+- React Three Fiber 기반 3D 관제 상태 표현
+
+### MZ 전국 맛집 정보 플랫폼
+
+해외 관광객의 전국 음식점 탐색을 목표로 구축한 4인 팀 프로젝트이며 팀장으로 참여했습니다.
+
+- Oracle 관계형 데이터 모델 설계
+- MyBatis SQL Mapper와 CRUD·검색·페이징 SQL 전체 작업 전담
+- 지역·카테고리 복합 검색과 Kakao Map API 연동
+- AWS EC2·Tomcat·RDS 배포와 팀 결과물 통합
 
 ## 기술 구성
 
-- React
-- TypeScript
-- Vite
-- React Router (`HashRouter`)
+- React 19
+- TypeScript 5
+- Vite 7
+- React Router 7 `HashRouter`
 - CSS
 
-백엔드, API 서버, 데이터베이스 또는 서버리스 함수 없이 정적 사이트로 구성되어 있습니다.
-
-## 로컬 실행
-
-```bash
-npm ci
-npm run dev
-```
-
-## 검증
-
-```bash
-npm run lint
-npm run build
-```
-
-## 배포
-
-`main` 브랜치에 변경사항을 push하면 GitHub Actions가 의존성 설치, lint, production build를 수행한 뒤 GitHub Pages에 배포합니다. Actions 탭에서 `Deploy to GitHub Pages` 워크플로를 직접 실행할 수도 있습니다.
+백엔드와 서버리스 함수 없이 GitHub Pages에 배포되는 정적 사이트입니다.
