@@ -35,7 +35,7 @@ function Resume() {
       <section className="resume-focus" aria-labelledby="resume-focus-title">
         <h2 id="resume-focus-title" className="visually-hidden">핵심 역량</h2>
         <article><p>01 · Backend</p><h3>API와 데이터 흐름</h3><span>REST API, 관계형 모델, 검색·페이징과 상태 기반 처리 로직 구현</span></article>
-        <article><p>02 · AI Integration</p><h3>조건부 AI 호출</h3><span>상태 전이 시 Gemini 호출, 동일 상태 결과 재사용과 업무 자동화</span></article>
+        <article><p>02 · AI Integration</p><h3>조건부 AI 호출</h3><span>상태 전이 기반 Gemini 호출 제어로 호출량 약 90% 감소·토큰 사용 절감</span></article>
         <article><p>03 · Operations</p><h3>서비스 운영과 품질검증</h3><span>공공 교육 플랫폼 유지보수 참여, CBT 이슈 대응과 특허검색 AX 자연어 품질평가</span></article>
       </section>
 
@@ -87,8 +87,8 @@ function Resume() {
                 <header><div><h3>Aura3D</h3><p>개인 프로젝트</p></div><time>2025.12–2026.01</time></header>
                 <ul>
                   <li>관리·스캔 제어·상태 조회 REST API</li>
-                  <li>TaskScheduler와 ConcurrentHashMap 기반 작업 생명주기</li>
-                  <li>상태 전이 시 Gemini 호출, 동일 상태 가이드 재사용</li>
+                  <li>Java 21 Virtual Thread·TaskScheduler·ConcurrentHashMap 기반 작업 생명주기</li>
+                  <li>상태 전이 기반 Gemini 호출 제어, 호출량 약 90% 감소와 불필요한 토큰 사용 절감</li>
                 </ul>
               </article>
               <article>

@@ -23,12 +23,12 @@ export const projects: readonly ProjectSummary[] = [
     type: '개인 프로젝트',
     period: '2025.12–2026.01',
     subtitle: '사용자 요청 기반 스캔과 상태 전이 기반 AI 가이드를 결합한 3D 모니터링 도구',
-    problem: '핵심 과제는 반복 스캔과 동일 상태의 AI 재호출을 분리해 외부 API 사용량과 관제 해석 부담을 줄이는 구조였습니다.',
+    problem: '핵심 과제는 반복 스캔과 AI 분석 요청을 분리하고, 상태가 변할 때만 Gemini를 호출해 외부 API 사용량과 관제 해석 부담을 줄이는 구조였습니다.',
     role: '스캔 작업 생명주기·AI 호출 최적화·3D 상태 시각화 구현',
     technologies: ['Java 21', 'Spring Boot 3.4', 'JPA', 'MySQL 8.0', 'React', 'Three.js', 'Gemini API'],
     highlights: [
-      'TaskScheduler와 ScheduledFuture 기반 동적 스캔 제어',
-      '상태 전이 시에만 Gemini를 호출하고 기존 가이드 재사용',
+      'Java 21 Virtual Thread·TaskScheduler·ScheduledFuture 기반 동적 스캔 제어',
+      '상태 전이 기반 호출 제어로 Gemini 호출량 약 90% 감소, 불필요한 토큰 사용 억제',
       'JPA 상태 이력과 React·Three.js 기반 관제 데이터 시각화',
     ],
     image: {

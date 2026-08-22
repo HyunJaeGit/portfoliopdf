@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import ChapterNav from '../../components/ChapterNav'
-import EvidencePlaceholder from '../../components/EvidencePlaceholder'
 import PrintButton from '../../components/PrintButton'
 import { projects } from '../../content/projects'
 import '../project-detail.css'
@@ -39,9 +38,9 @@ function Aura3D() {
           </div>
         </div>
         <dl className="detail-metrics" aria-label="Aura3D 핵심 수치">
-          <div><dt>1인</dt><dd>개인 설계·구현</dd></div>
-          <div><dt>1:N</dt><dd>관제 대상·상태 이력</dd></div>
-          <div><dt>0회</dt><dd>동일 상태 AI 재호출</dd></div>
+          <div><dt>약 90%</dt><dd>AI 호출량 감소·토큰 사용 절감</dd></div>
+          <div><dt>Java 21·DB</dt><dd>Virtual Thread 스케줄러·JPA 관제 이력 영속화</dd></div>
+          <div><dt>3D·AI</dt><dd>3D 모델 기반 상태 시각화·AI 대응 가이드 통합</dd></div>
         </dl>
         <ChapterNav items={chapters} />
       </header>
@@ -54,7 +53,7 @@ function Aura3D() {
             <ul className="chapter-points">
               <li>사용자가 확인할 때만 대상별 스캔을 시작·중지</li>
               <li>동일 프로젝트의 중복 스캔 등록 방지</li>
-              <li>상태 수집과 비용이 발생하는 AI 분석 분리</li>
+              <li>상태 수집과 토큰을 사용하는 AI 분석 요청 분리</li>
               <li>상태 이력·AI 가이드·3D 화면의 갱신 기준 통일</li>
             </ul>
           </div>
@@ -71,7 +70,10 @@ function Aura3D() {
               <li><span>04</span><strong>조건부 AI</strong><small>상태 전이 시 Gemini</small></li>
               <li><span>05</span><strong>3D 표현</strong><small>상태·가이드 연결</small></li>
             </ol>
-            <EvidencePlaceholder title="프로젝트 등록·스캔 제어 화면" description="프로젝트 URL 등록, 스캔 시작·중지 상태와 대상별 실행 여부가 함께 보이는 개발 화면을 배치하세요." />
+            <figure className="chapter-wide-evidence architecture-evidence">
+              <img src={`${import.meta.env.BASE_URL}images/projects/aura3d-architecture.png`} alt="React 프론트엔드, Java 21 Spring Boot 백엔드, Gemini API, MySQL 모니터링 이력과 등록 URL의 연결을 보여주는 Aura3D 시스템 아키텍처" loading="lazy" />
+              <figcaption>시스템 아키텍처 — React·R3F 관제 화면, Java 21 Virtual Thread 기반 스케줄러, JPA 모니터링 이력과 상태 전이 기반 Gemini 분석 요청의 연결 구조</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -80,9 +82,9 @@ function Aura3D() {
           <div className="chapter-content">
             <div className="implementation-list">
               <div><p>01</p><h3>관제 대상 REST API</h3><span>등록·조회·삭제와 대상별 스캔 제어 API 구현을 통해 자원 중심의 엔드포인트 설계 경험 확보</span></div>
-              <div><p>02</p><h3>TaskScheduler</h3><span><code>ScheduledFuture</code> 보관 구조를 통해 실행 중인 주기 작업까지 취소하는 생명주기 제어 기술 적용</span></div>
+              <div><p>02</p><h3>Virtual Thread 스케줄러</h3><span>Java 21 Virtual Thread 기반 <code>TaskScheduler</code>와 <code>ScheduledFuture</code> 보관 구조로 주기 작업 실행·취소 제어</span></div>
               <div><p>03</p><h3>중복 실행 방지</h3><span><code>ConcurrentHashMap</code>으로 활성 작업을 추적해 동일 프로젝트의 중복 스캔 등록 차단</span></div>
-              <div><p>04</p><h3>상태 전이 기반 Gemini</h3><span>새 상태에서만 가이드를 생성하고 동일 상태에서는 기존 결과를 재사용해 불필요한 외부 API 호출 억제</span></div>
+              <div><p>04</p><h3>상태 전이 기반 Gemini</h3><span>상태가 변할 때만 분석을 요청하고 동일 상태에서는 기존 가이드를 재사용해 호출량 약 90% 감소·불필요한 토큰 사용 억제</span></div>
               <div><p>05</p><h3>JPA 모니터링 이력</h3><span>상태 전이와 AI 가이드를 함께 저장해 비교 로직과 화면 조회가 같은 기준을 사용하는 구조 확보</span></div>
               <div><p>06</p><h3>React·Three.js</h3><span>HTTP 상태와 대응 정보를 연결해 백엔드 관제 데이터를 3D 비서 상태로 시각화</span></div>
             </div>
@@ -95,8 +97,10 @@ function Aura3D() {
               <figcaption>개발 단계 ERD — 관제 대상별 상태 코드·확인 시점·AI 가이드를 1:N 모니터링 이력으로 관리</figcaption>
             </figure>
             <div className="evidence-grid">
-              <EvidencePlaceholder title="HTTP 상태 전이 화면" description="동일 대상의 이전 상태와 변경된 상태, 수집 시점이 함께 보이는 모니터링 이력 화면을 배치하세요." />
-              <EvidencePlaceholder title="Gemini 가이드 생성·재사용 화면" description="최초 또는 상태 변경 시 생성된 가이드와 동일 상태에서 재사용되는 결과를 비교할 수 있는 화면을 배치하세요." />
+              <figure className="evidence-figure">
+                <img src={`${import.meta.env.BASE_URL}images/projects/aura3d-api-usage.png`} alt="Aura3D Gemini API 호출 제어 테스트 중 요청 수를 확인한 Google AI Studio 사용량 화면" loading="lazy" />
+                <figcaption>호출 제어 테스트 화면 — 상태 전이 기반 분석 요청 적용 후 Gemini API 요청 수를 사용량 대시보드에서 확인</figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -106,7 +110,7 @@ function Aura3D() {
           <div className="chapter-content result-layout">
             <p className="chapter-lead">사용자 요청 기반 스캔부터 상태 수집, 전이 감지, AI 가이드와 3D 표현까지 연결한 관제 파이프라인 구축</p>
             <ul className="result-list">
-              <li><strong>호출 제어</strong><span>동일 상태에서 저장된 분석 결과를 재사용해 반복 Gemini 호출 제거</span></li>
+              <li><strong>호출 제어</strong><span>반복 상태 테스트 기준 Gemini 호출량 약 90% 감소, 불필요한 요청·응답 토큰 사용 절감</span></li>
               <li><strong>동작 검증</strong><span>CRUD·스캔 제어·중복 작업 방지·상태별 AI 분기 검증을 통한 핵심 동작의 일관성 확인</span></li>
               <li><strong>시각적 대응</strong><span>HTTP 상태와 AI 가이드를 3D 비서 상태로 연결해 원시 응답 해석 단계 축소</span></li>
             </ul>

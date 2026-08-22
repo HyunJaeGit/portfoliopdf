@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import ChapterNav from '../../components/ChapterNav'
-import EvidencePlaceholder from '../../components/EvidencePlaceholder'
 import PrintButton from '../../components/PrintButton'
 import { projects } from '../../content/projects'
 import '../project-detail.css'
@@ -81,7 +80,10 @@ function MZ() {
                 <img src={`${import.meta.env.BASE_URL}images/projects/mz-erd.jpg`} alt="음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 MZ 데이터베이스 ERD" loading="lazy" />
                 <figcaption>개발 단계 ERD — 음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 관계형 데이터 구조</figcaption>
               </figure>
-              <EvidencePlaceholder title="회원가입 기능 화면" description="입력 항목과 유효성 확인, 가입 완료 흐름이 보이는 개발 화면을 배치하고 실제 개인정보는 마스킹하세요." />
+              <figure className="evidence-figure">
+                <img src={`${import.meta.env.BASE_URL}images/projects/mz-signup.png`} alt="아이디, 비밀번호, 닉네임, 이메일, 생년월일, 전화번호, 국적과 성별을 입력하는 MZ 회원가입 화면" loading="lazy" />
+                <figcaption>개발·테스트 환경 화면 — 회원 입력 정보를 검증하고 Oracle 계정 데이터로 저장하는 회원가입 진입 화면</figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -124,7 +126,6 @@ function MZ() {
                 <div role="cell"><p>다국어 UI, 마이페이지, 리뷰·이미지, 랭킹과 추천 기능은 4인 팀의 역할별 분담 범위. 팀장으로서 기능 브랜치와 결과물을 조율·병합해 하나의 서비스로 통합</p></div>
               </div>
             </div>
-            <EvidencePlaceholder title="AWS 배포 구성 또는 실행 화면" description="EC2의 Tomcat 애플리케이션과 RDS Oracle 연결 관계 또는 배포 결과를 보여주세요. 계정, 엔드포인트, 보안 그룹과 키 정보는 반드시 마스킹하세요." />
             <ul className="result-list">
               <li><strong>서비스 통합</strong><span>관계형 데이터·복합 검색·페이지 조회·지도 탐색을 하나의 플랫폼 사용자 흐름으로 연결</span></li>
               <li><strong>배포 확인</strong><span>EC2의 Tomcat 구동과 RDS Oracle 연결을 통한 애플리케이션·DB 분리 배포 경험 확보</span></li>

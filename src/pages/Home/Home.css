@@ -25,6 +25,10 @@
 .case-heading-number { margin: 0; font-family: Consolas, "SFMono-Regular", monospace; font-size: 0.69rem; font-weight: 700; letter-spacing: 0.11em; }
 .case-heading-number { color: var(--accent); }
 .case-heading h2 { margin: 0; color: var(--navy); font-size: clamp(1.45rem, 3vw, 2rem); letter-spacing: -0.035em; }
+.case-heading-link { display: inline-flex; min-height: 44px; align-items: center; text-decoration: none; }
+.case-heading-link span { margin-left: 8px; color: var(--accent); font-size: 0.78em; transition: transform 160ms ease; }
+.case-heading-link:hover { color: var(--accent); }
+.case-heading-link:hover span, .case-heading-link:focus-visible span { transform: translateX(4px); }
 .capability-list article { display: grid; grid-template-columns: 46px minmax(0, 1.25fr) minmax(190px, 0.75fr); gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--line); }
 .capability-number { margin: 3px 0 0; color: var(--accent); font-family: Consolas, "SFMono-Regular", monospace; font-size: 0.73rem; }
 .capability-label { margin: 0 0 7px; color: var(--accent); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -83,6 +87,11 @@
   .cover-metrics dd { margin-top: 0; }
   .case-record { padding-inline: 24px; }
   .case-record dl div { grid-template-columns: 1fr; gap: 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-heading-link span { transition: none; }
+  .case-heading-link:hover span, .case-heading-link:focus-visible span { transform: none; }
 }
 
 @media print {

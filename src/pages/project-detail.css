@@ -65,6 +65,8 @@
 .data-model-evidence figcaption { width: min(100%, 620px); margin-top: 12px; color: var(--muted); font-size: 0.7rem; line-height: 1.55; word-break: keep-all; }
 .chapter-wide-evidence { margin: 26px 0 0; }
 .chapter-wide-evidence img { display: block; width: 100%; border: 1px solid var(--line); }
+.architecture-evidence { padding: 12px; background: #071016; }
+.architecture-evidence figcaption { color: rgba(255, 255, 255, 0.74); }
 .chapter-wide-evidence figcaption, .evidence-figure figcaption { margin-top: 9px; color: var(--muted); font-size: 0.7rem; line-height: 1.55; word-break: keep-all; }
 .evidence-figure { display: grid; align-content: start; margin: 26px 0 0; }
 .evidence-figure img { display: block; width: 100%; min-height: 190px; border: 1px solid var(--line); background: #111; object-fit: contain; }
@@ -74,6 +76,7 @@
 .evidence-placeholder strong { font-size: 0.9rem; }
 .evidence-placeholder p { max-width: 490px; margin: 0; font-size: 0.74rem; line-height: 1.55; word-break: keep-all; }
 .evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.evidence-grid > :only-child { grid-column: 1 / -1; }
 .evidence-grid .evidence-placeholder { min-height: 190px; }
 
 .evidence-story { display: grid; grid-template-columns: minmax(270px, 1.05fr) minmax(220px, 0.95fr); gap: 28px; align-items: start; }

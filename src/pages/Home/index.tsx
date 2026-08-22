@@ -14,7 +14,7 @@ const capabilities = [
     number: '02',
     label: 'AI Integration',
     title: 'AI API 연동',
-    description: 'Aura3D의 조건부 Gemini 호출과 반복 업무 자동화를 통한 외부 AI API·서비스 로직 연동',
+    description: 'Aura3D의 상태 전이 기반 Gemini 호출 제어로 API 호출량 약 90% 감소·불필요한 토큰 사용 억제',
     stack: 'Gemini API · State Transition · Automation',
   },
   {
@@ -77,10 +77,10 @@ function Home() {
       </section>
 
       <section className="case-section" aria-labelledby="selected-work-title">
-        <CaseHeading number="02" title="프로젝트" id="selected-work-title" />
+        <CaseHeading number="02" title="프로젝트" id="selected-work-title" to="/portfolio" />
         <div className="work-preview-list">
           {projects.map((project, index) => (
-            <Link className="work-preview-link" to="/portfolio" key={project.id} aria-label={`${project.title} 포트폴리오 목차로 이동`}>
+            <Link className="work-preview-link" to={project.path} key={project.id} aria-label={`${project.title} 상세 페이지로 이동`}>
               <article className="work-preview">
                 <figure>
                   <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} loading="lazy" />
@@ -94,7 +94,7 @@ function Home() {
                     <div><dt>역할</dt><dd>{project.role}</dd></div>
                     <div><dt>핵심</dt><dd>{project.highlights.slice(0, 2).join(' · ')}</dd></div>
                   </dl>
-                  <strong className="work-preview-cta">포트폴리오에서 보기 →</strong>
+                  <strong className="work-preview-cta">상세 보기 →</strong>
                 </div>
               </article>
             </Link>
@@ -116,13 +116,13 @@ function Home() {
   )
 }
 
-type CaseHeadingProps = { number: string; title: string; id: string }
+type CaseHeadingProps = { number: string; title: string; id: string; to?: string }
 
-function CaseHeading({ number, title, id }: CaseHeadingProps) {
+function CaseHeading({ number, title, id, to }: CaseHeadingProps) {
   return (
     <header className="case-heading">
       <p className="case-heading-number">{number}</p>
-      <h2 id={id}>{title}</h2>
+      <h2 id={id}>{to ? <Link className="case-heading-link" to={to}>{title}<span aria-hidden="true"> →</span></Link> : title}</h2>
     </header>
   )
 }
