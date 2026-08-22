@@ -9,6 +9,7 @@
 .detail-visual { margin: 0; }
 .detail-visual img { display: block; width: 100%; aspect-ratio: 4 / 3; border: 1px solid var(--line); object-fit: cover; object-position: center; }
 .aura3d-dashboard-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #050505; }
+.mz-search-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #f8f5ef; }
 .detail-visual figcaption, .evidence-story figcaption { margin-top: 9px; color: var(--muted); font-size: 0.7rem; line-height: 1.55; }
 .detail-summary { min-width: 0; }
 .detail-overview { display: grid; margin: 0; border-top: 2px solid var(--navy); }
@@ -16,6 +17,11 @@
 .detail-overview dt { color: var(--navy); font-size: 0.72rem; font-weight: 800; }
 .detail-overview dd { margin: 0; color: var(--muted); font-size: 0.79rem; line-height: 1.58; word-break: keep-all; }
 .detail-actions { margin-top: 20px; }
+.detail-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 28px 0 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--line); }
+.detail-metrics div { min-width: 0; padding: 16px 18px 16px 0; }
+.detail-metrics div + div { padding-left: 18px; border-left: 1px solid var(--line); }
+.detail-metrics dt { color: var(--accent); font-family: Consolas, "SFMono-Regular", monospace; font-size: 1.08rem; font-weight: 800; }
+.detail-metrics dd { margin: 5px 0 0; color: var(--muted); font-size: 0.74rem; line-height: 1.5; word-break: keep-all; }
 .chapter-nav { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
 .chapter-nav > p { margin: 0 0 10px; color: var(--muted); font-size: 0.7rem; font-weight: 800; }
 .chapter-nav > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); }
@@ -57,6 +63,11 @@
 .data-model-evidence { display: grid; justify-items: center; margin: 26px 0 0; padding: clamp(18px, 3vw, 28px); border: 1px solid var(--line); background: #faf8f4; }
 .data-model-evidence img { display: block; width: min(100%, 620px); max-height: 620px; object-fit: contain; }
 .data-model-evidence figcaption { width: min(100%, 620px); margin-top: 12px; color: var(--muted); font-size: 0.7rem; line-height: 1.55; word-break: keep-all; }
+.chapter-wide-evidence { margin: 26px 0 0; }
+.chapter-wide-evidence img { display: block; width: 100%; border: 1px solid var(--line); }
+.chapter-wide-evidence figcaption, .evidence-figure figcaption { margin-top: 9px; color: var(--muted); font-size: 0.7rem; line-height: 1.55; word-break: keep-all; }
+.evidence-figure { display: grid; align-content: start; margin: 26px 0 0; }
+.evidence-figure img { display: block; width: 100%; min-height: 190px; border: 1px solid var(--line); background: #111; object-fit: contain; }
 
 .evidence-placeholder { display: flex; min-height: 210px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-top: 26px; padding: 24px; border: 2px dashed #4d8864; color: #24533a; background: #e5f0e7; text-align: center; }
 .evidence-placeholder > span { font-family: Consolas, "SFMono-Regular", monospace; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.11em; }
@@ -109,6 +120,10 @@
   .contribution-row > div:first-child::before { display: block; margin-bottom: 12px; color: var(--accent); font-size: 0.72rem; font-weight: 800; content: '본인 기여'; }
   .contribution-row > div:last-child::before { display: block; margin-bottom: 12px; color: var(--accent); font-size: 0.72rem; font-weight: 800; content: '팀 구현 범위'; }
   .result-list li { grid-template-columns: 1fr; gap: 5px; }
+  .detail-metrics { grid-template-columns: 1fr; }
+  .detail-metrics div { display: grid; grid-template-columns: 68px 1fr; align-items: baseline; padding: 12px 0; }
+  .detail-metrics div + div { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+  .detail-metrics dd { margin-top: 0; }
 }
 
 @media (max-width: 380px) {

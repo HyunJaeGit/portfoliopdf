@@ -94,7 +94,8 @@ function Resume() {
               <article>
                 <header><div><h3>MZ 전국 맛집 정보 플랫폼</h3><p>4인 팀장</p></div><time>2023.09–2024.01</time></header>
                 <ul>
-                  <li>Oracle DB 설계와 MyBatis 복합 검색·페이징</li>
+                  <li>Oracle DB 설계와 MyBatis SQL Mapper·전체 SQL 작업 전담</li>
+                  <li>CRUD·지역/카테고리 복합 검색·OFFSET/FETCH 페이징 쿼리</li>
                   <li>회원가입, Kakao Map API와 AWS EC2·RDS 배포</li>
                   <li>일정·브랜치 조율과 팀 결과물 통합</li>
                 </ul>

@@ -112,6 +112,9 @@ a:focus-visible {
 .site-title > span:last-child { display: grid; gap: 1px; }
 .site-title strong { font-size: 0.9rem; letter-spacing: -0.02em; }
 .site-title small { color: var(--muted); font-size: 0.63rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.header-actions { display: flex; align-items: center; gap: 18px; }
+.header-print-link { display: inline-flex; min-height: 36px; align-items: center; padding: 0 12px; border: 1px solid var(--accent); color: var(--accent); font-size: 0.76rem; font-weight: 800; text-decoration: none; }
+.header-print-link:hover, .header-print-link:focus-visible { color: #fff; background: var(--accent); }
 
 .nav-list {
   display: flex;
@@ -270,6 +273,8 @@ h1 {
   }
 
   .site-title small { display: none; }
+  .header-actions { gap: 8px; }
+  .header-print-link { min-height: 40px; padding-inline: 10px; }
   .footer-inner { display: grid; gap: 5px; }
 }
 
@@ -303,6 +308,7 @@ h1 {
   .site-footer,
   .skip-link,
   .print-button,
+  .header-print-link,
   .back-link {
     display: none !important;
   }

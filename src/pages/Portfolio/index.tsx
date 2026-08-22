@@ -17,7 +17,7 @@ function Portfolio() {
       <div className="portfolio-index" aria-label="프로젝트 목차">
         {projects.map((project, index) => (
           <Link className="portfolio-entry" to={project.path} key={project.id} aria-label={`${project.title} 상세 포트폴리오 보기`}>
-            <figure className={project.id === 'aura3d' ? 'aura3d-entry-visual' : undefined}>
+            <figure className={`${project.id}-entry-visual`}>
               <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} />
               <figcaption>개발·테스트 환경 화면</figcaption>
             </figure>

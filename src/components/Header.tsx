@@ -12,7 +12,10 @@ function Header() {
             <small>Backend Technical Casebook</small>
           </span>
         </Link>
-        <Navigation />
+        <div className="header-actions">
+          <Link className="header-print-link" to="/print">전체 PDF</Link>
+          <Navigation />
+        </div>
       </div>
     </header>
   )

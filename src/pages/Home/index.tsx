@@ -6,21 +6,21 @@ const capabilities = [
   {
     number: '01',
     label: 'Backend Development',
-    title: '상태와 데이터 흐름을 제어하는 백엔드 로직',
+    title: '백엔드 개발',
     description: 'Spring MVC·MyBatis와 Spring Boot·JPA 기반 REST API, 관계형 데이터 모델, 검색·스케줄링 로직 구현',
     stack: 'Java · Spring · JPA · MyBatis · MySQL · Oracle',
   },
   {
     number: '02',
     label: 'AI Integration',
-    title: '상태 전이를 기준으로 제어한 AI API 호출',
+    title: 'AI API 연동',
     description: 'Aura3D의 조건부 Gemini 호출과 반복 업무 자동화를 통한 외부 AI API·서비스 로직 연동',
     stack: 'Gemini API · State Transition · Automation',
   },
   {
     number: '03',
     label: 'Service Operations & AI QA',
-    title: '운영 이슈를 개발 가능한 기술 정보로 구조화',
+    title: '운영 및 품질검증',
     description: '공공 교육 플랫폼 운영·유지보수의 장애 분류·개발사 이관과 특허검색 AX의 자연어 검색 품질검증',
     stack: 'Service Operations · Issue Triage · Maintenance · AI Search QA',
   },
@@ -38,9 +38,13 @@ function Home() {
           <p className="cover-kicker">Java · Spring Backend Developer</p>
           <h1 id="hero-title">권현재</h1>
           <p className="cover-statement">
-            상태와 데이터 흐름을 설계하고,<br />
-            필요한 순간에 AI가 동작하는 서비스를 만듭니다.
+            Java·Spring 프로젝트와 공공기관 서비스 운영 경험을 보유한 신입 백엔드 개발자
           </p>
+          <dl className="cover-metrics">
+            <div><dt>2개</dt><dd>대표 프로젝트</dd></div>
+            <div><dt>1,080h</dt><dd>개발 교육</dd></div>
+            <div><dt>2곳</dt><dd>공공기관 업무 경험</dd></div>
+          </dl>
         </div>
         <div className="cover-summary">
           <p>Java·Spring 기반 REST API, 관계형 데이터 모델과 AWS 배포 경험. 개발·운영·AI 품질검증에서 발견한 문제를 재현 가능한 기술 정보와 동작하는 백엔드 로직으로 전환합니다.</p>
@@ -56,7 +60,7 @@ function Home() {
       </section>
 
       <section className="case-section" aria-labelledby="capabilities-title">
-        <CaseHeading number="01" title="백엔드 개발을 중심으로 연결한 세 가지 역량" id="capabilities-title" />
+        <CaseHeading number="01" title="개발 역량 및 스킬" id="capabilities-title" />
         <div className="capability-list">
           {capabilities.map((capability) => (
             <article key={capability.number}>
@@ -73,7 +77,7 @@ function Home() {
       </section>
 
       <section className="case-section" aria-labelledby="selected-work-title">
-        <CaseHeading number="02" title="두 프로젝트로 확인하는 구현 범위" id="selected-work-title" />
+        <CaseHeading number="02" title="프로젝트" id="selected-work-title" />
         <div className="work-preview-list">
           {projects.map((project, index) => (
             <Link className="work-preview-link" to="/portfolio" key={project.id} aria-label={`${project.title} 포트폴리오 목차로 이동`}>
@@ -100,13 +104,12 @@ function Home() {
 
       <section className="case-record" aria-labelledby="record-title">
         <div>
-          <p className="case-record-label">Career Record</p>
-          <h2 id="record-title">현장 경험에서 확장한<br />기술 문제 해결 역량</h2>
+          <h2 id="record-title">주요 실무 경험</h2>
         </div>
         <dl>
-          <div><dt>1,080h</dt><dd>Java·Spring과 AWS 기반 개발 교육</dd></div>
-          <div><dt>40개교·80학급</dt><dd>국가수준 학업성취도평가 CBT 운영·사전점검</dd></div>
-          <div><dt>AX Quality</dt><dd>특허 AI 검색 기능의 자연어 품질평가</dd></div>
+          <div><dt>한국교육과정평가원</dt><dd>고객사 프로젝트 · 공공 교육 포털 운영·유지보수 및 CBT 기술지원</dd></div>
+          <div><dt>한국지질자원연구원</dt><dd>직접 근무 · 연구 자료·현장 조사 정보 및 행정 업무 지원</dd></div>
+          <div><dt>특허검색 AX</dt><dd>케이원 프로젝트 · AI 자연어 검색 적합성·이상 사례 품질검증</dd></div>
         </dl>
       </section>
     </div>

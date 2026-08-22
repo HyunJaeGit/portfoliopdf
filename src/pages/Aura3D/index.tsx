@@ -38,6 +38,11 @@ function Aura3D() {
             <div className="detail-actions"><PrintButton /></div>
           </div>
         </div>
+        <dl className="detail-metrics" aria-label="Aura3D 핵심 수치">
+          <div><dt>1인</dt><dd>개인 설계·구현</dd></div>
+          <div><dt>1:N</dt><dd>관제 대상·상태 이력</dd></div>
+          <div><dt>0회</dt><dd>동일 상태 AI 재호출</dd></div>
+        </dl>
         <ChapterNav items={chapters} />
       </header>
 

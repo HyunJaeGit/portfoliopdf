@@ -45,10 +45,10 @@ export const projects: readonly ProjectSummary[] = [
     period: '2023.09–2024.01',
     subtitle: '해외 관광객이 다국어·지역·카테고리 기준으로 음식점을 탐색하는 플랫폼',
     problem: '핵심 과제는 지역 정보에 익숙하지 않은 사용자도 전국 음식점을 검색하고 지도에서 비교할 수 있는 탐색 흐름이었습니다.',
-    role: '팀장 · 기획/QC · 검색·CRUD·페이징 · DB 설계 · 지도 연동 · AWS 배포',
+    role: '팀장 · Oracle DB 설계 · MyBatis SQL Mapper 및 전체 SQL 작업 · 지도 연동 · AWS 배포',
     technologies: ['Java 8', 'Spring Framework 4', 'JSP', 'MyBatis', 'Oracle 18c', 'Kakao Map API', 'AWS EC2·RDS'],
     highlights: [
-      'MyBatis 동적 SQL을 활용한 지역·카테고리 복합 검색',
+      'MyBatis SQL Mapper와 CRUD·복합 검색·페이징 쿼리 전담',
       'Oracle OFFSET/FETCH 기반 목록 페이징',
       'Kakao Map API 연동과 AWS EC2·RDS 배포',
     ],

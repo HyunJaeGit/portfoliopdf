@@ -24,7 +24,7 @@ function MZ() {
           <p className="detail-lead">{project.subtitle}</p>
         </div>
         <div className="detail-summary-grid">
-          <figure className="detail-visual">
+          <figure className="detail-visual mz-search-visual">
             <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} />
             <figcaption>{project.image.caption}</figcaption>
           </figure>
@@ -38,35 +38,49 @@ function MZ() {
             <div className="detail-actions"><PrintButton /></div>
           </div>
         </div>
+        <dl className="detail-metrics" aria-label="MZ 프로젝트 핵심 수치">
+          <div><dt>4인</dt><dd>팀 프로젝트</dd></div>
+          <div><dt>2개</dt><dd>지역·카테고리 검색축</dd></div>
+          <div><dt>2계층</dt><dd>EC2 애플리케이션·RDS DB</dd></div>
+        </dl>
         <ChapterNav items={chapters} />
       </header>
 
       <div className="detail-body">
         <section className="case-chapter" aria-labelledby="mz-goal">
           <ChapterHeading number="01" title="전국 음식점 정보를 연결한 탐색 플랫폼" id="mz-goal" />
-          <div className="chapter-content chapter-copy-grid">
-            <p className="chapter-lead">해외 관광객의 탐색 과정을 기준으로 다국어 UI, 지역·카테고리 검색, 지도와 회원 기능을 연결한 전국 단위 음식점 정보 플랫폼 설계</p>
-            <ul className="chapter-points">
-              <li>전국 단위 음식점·지역·카테고리 데이터 구조화</li>
-              <li>검색 결과와 지도 위치를 같은 탐색 흐름으로 연결</li>
-              <li>Java 8·Spring MVC·JSP 기반 서버 렌더링 구조 활용</li>
-              <li>4인의 기능 브랜치와 결과물을 하나의 플랫폼으로 통합</li>
-            </ul>
+          <div className="chapter-content">
+            <div className="chapter-copy-grid">
+              <p className="chapter-lead">해외 관광객의 탐색 과정을 기준으로 다국어 UI, 지역·카테고리 검색, 지도와 회원 기능을 연결한 전국 단위 음식점 정보 플랫폼 설계</p>
+              <ul className="chapter-points">
+                <li>전국 단위 음식점·지역·카테고리 데이터 구조화</li>
+                <li>검색 결과와 지도 위치를 같은 탐색 흐름으로 연결</li>
+                <li>Java 8·Spring MVC·JSP 기반 서버 렌더링 구조 활용</li>
+                <li>4인의 기능 브랜치와 결과물을 하나의 플랫폼으로 통합</li>
+              </ul>
+            </div>
+            <figure className="chapter-wide-evidence">
+              <img src={`${import.meta.env.BASE_URL}images/projects/mz-main-search.jpg`} alt="MZ 플랫폼의 지역·카테고리 검색과 다국어 탐색 메뉴가 있는 메인 화면" loading="lazy" />
+              <figcaption>개발·테스트 환경 화면 — 지역·카테고리 검색과 다국어 탐색 진입점을 제공하는 MZ 메인 화면</figcaption>
+            </figure>
           </div>
         </section>
 
         <section className="case-chapter" aria-labelledby="mz-data">
           <ChapterHeading number="02" title="관계형 데이터와 동적 SQL 기반 복합 검색" id="mz-data" />
           <div className="chapter-content">
-            <p className="chapter-lead">음식점·지역·카테고리·회원·리뷰·북마크 도메인의 관계형 모델링과 선택 조건 기반 SQL로 구성한 복합 검색 로직</p>
+            <p className="chapter-lead">Oracle 관계형 데이터 모델을 설계하고 MyBatis SQL Mapper와 전체 SQL 작업을 전담. CRUD부터 지역·카테고리 복합 검색, OFFSET/FETCH 페이징까지 데이터 접근 계층 구현</p>
             <div className="implementation-list compact-list">
               <div><p>01</p><h3>Oracle 데이터 모델</h3><span>음식점·지역·카테고리 관계를 중심으로 검색과 서비스 기능을 지탱하는 데이터 모델 설계</span></div>
-              <div><p>02</p><h3>MyBatis 동적 SQL</h3><span>선택 조건만 SQL에 반영해 단일·복합 검색을 하나의 조회 흐름으로 통합</span></div>
+              <div><p>02</p><h3>SQL Mapper 전담</h3><span>MyBatis Mapper와 CRUD·검색 SQL 전체를 작성하고 선택 조건 기반 동적 SQL로 단일·복합 검색 통합</span></div>
               <div><p>03</p><h3>OFFSET/FETCH</h3><span>Oracle 조회 범위 제어를 통해 검색 결과를 페이지 단위로 반환하는 페이징 기술 적용</span></div>
               <div><p>04</p><h3>회원가입</h3><span>회원 입력 정보 검증부터 Oracle 저장까지 가입 기능의 서버 처리 흐름 구현</span></div>
             </div>
             <div className="evidence-grid">
-              <EvidencePlaceholder title="DB 관계 구조" description="음식점·지역·카테고리·회원·리뷰 테이블의 관계가 보이는 ERD를 배치하고 실제 계정·접속 정보는 제외하세요." />
+              <figure className="evidence-figure">
+                <img src={`${import.meta.env.BASE_URL}images/projects/mz-erd.jpg`} alt="음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 MZ 데이터베이스 ERD" loading="lazy" />
+                <figcaption>개발 단계 ERD — 음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 관계형 데이터 구조</figcaption>
+              </figure>
               <EvidencePlaceholder title="회원가입 기능 화면" description="입력 항목과 유효성 확인, 가입 완료 흐름이 보이는 개발 화면을 배치하고 실제 개인정보는 마스킹하세요." />
             </div>
           </div>
@@ -76,8 +90,8 @@ function MZ() {
           <ChapterHeading number="03" title="검색 결과와 Kakao 지도의 연결" id="mz-map" />
           <div className="chapter-content evidence-story">
             <figure>
-              <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} />
-              <figcaption>{project.image.caption}</figcaption>
+              <img src={`${import.meta.env.BASE_URL}images/projects/mz-map-list.png`} alt="강원 속초시 지도 마커와 주변 음식점 목록을 함께 보여주는 MZ 지도 탐색 화면" loading="lazy" />
+              <figcaption>개발·테스트 환경 화면 — 선택 지역의 지도 마커와 음식점 목록·상세 정보를 함께 제공하는 탐색 화면</figcaption>
             </figure>
             <div>
               <p className="chapter-lead">DB 조회 좌표를 Kakao Map API 마커로 변환하고 음식점 정보를 동적 인포윈도우에 연결한 지도 탐색 흐름</p>
@@ -100,7 +114,9 @@ function MZ() {
                   <ul>
                     <li>기획·QC, 개발 일정과 Git 브랜치 조율</li>
                     <li>Oracle DB 설계·데이터 수집</li>
-                    <li>검색·CRUD·페이징과 회원가입</li>
+                    <li>MyBatis SQL Mapper와 전체 SQL 작업 전담</li>
+                    <li>CRUD·복합 검색·OFFSET/FETCH 페이징</li>
+                    <li>회원가입 서버 처리</li>
                     <li>Kakao Map API 연동</li>
                     <li>AWS EC2·Tomcat·RDS 배포</li>
                   </ul>

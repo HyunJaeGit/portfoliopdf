@@ -9,6 +9,7 @@
 .portfolio-entry figure { align-self: start; margin: 0; }
 .portfolio-entry img { display: block; width: 100%; aspect-ratio: 4 / 3; border: 1px solid var(--line); object-fit: cover; object-position: center; }
 .portfolio-entry .aura3d-entry-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #050505; }
+.portfolio-entry .mz-entry-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #f8f5ef; }
 .portfolio-entry figcaption { margin-top: 8px; color: var(--muted); font-size: 0.68rem; }
 .portfolio-entry-copy { min-width: 0; }
 .portfolio-entry-heading { display: flex; justify-content: space-between; gap: 18px; }

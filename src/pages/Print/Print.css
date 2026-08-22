@@ -1,0 +1,22 @@
+.print-page { display: grid; gap: 72px; }
+.print-page-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 32px; padding: 28px; border: 1px solid var(--line); background: var(--surface); }
+.print-page-toolbar h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.print-page-toolbar p { margin: 14px 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.65; word-break: keep-all; }
+.print-document { display: grid; gap: 96px; }
+.print-document-section { min-width: 0; }
+.print-document-section + .print-document-section { padding-top: 72px; border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  .print-page-toolbar { align-items: stretch; flex-direction: column; padding: 22px; }
+  .print-page-toolbar .print-button { width: 100%; }
+  .print-document { gap: 72px; }
+  .print-document-section + .print-document-section { padding-top: 56px; }
+}
+
+@media print {
+  .print-page-toolbar { display: none; }
+  .print-page, .print-document { display: block; }
+  .print-document-section { break-before: page; }
+  .print-document-section:first-child { break-before: auto; }
+  .print-document-section + .print-document-section { padding-top: 0; border-top: 0; }
+}

@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import MZ from './pages/MZ'
 import NotFound from './pages/NotFound'
 import Portfolio from './pages/Portfolio'
+import Print from './pages/Print'
 import Resume from './pages/Resume'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="portfolio/aura3d" element={<Aura3D />} />
         <Route path="portfolio/mz" element={<MZ />} />
+        <Route path="print" element={<Print />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
