@@ -1,0 +1,27 @@
+import { Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import Aura3D from './pages/Aura3D'
+import Home from './pages/Home'
+import MZ from './pages/MZ'
+import NotFound from './pages/NotFound'
+import Portfolio from './pages/Portfolio'
+import Projects from './pages/Projects'
+import Resume from './pages/Resume'
+
+function App() {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="projects/aura3d" element={<Aura3D />} />
+        <Route path="projects/mz" element={<MZ />} />
+        <Route path="resume" element={<Resume />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  )
+}
+
+export default App
