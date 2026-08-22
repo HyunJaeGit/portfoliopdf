@@ -3,9 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 const navigationItems = [
   { to: '/', label: '홈', end: true },
-  { to: '/projects', label: '프로젝트', end: false },
   { to: '/resume', label: '이력서', end: true },
-  { to: '/portfolio', label: '포트폴리오', end: true },
+  { to: '/portfolio', label: '포트폴리오', end: false },
 ]
 
 function Navigation() {

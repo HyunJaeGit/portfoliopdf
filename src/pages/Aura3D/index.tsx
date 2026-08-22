@@ -1,72 +1,121 @@
 import { Link } from 'react-router-dom'
+import ChapterNav from '../../components/ChapterNav'
+import EvidencePlaceholder from '../../components/EvidencePlaceholder'
+import PrintButton from '../../components/PrintButton'
 import { projects } from '../../content/projects'
 import '../project-detail.css'
 
 const project = projects[0]
+const chapters = [
+  { id: 'aura-problem', label: '문제 정의' },
+  { id: 'aura-architecture', label: '설계 구조' },
+  { id: 'aura-implementation', label: '핵심 구현' },
+  { id: 'aura-result', label: '구현 결과' },
+] as const
 
 function Aura3D() {
   return (
     <article className="project-detail">
       <header className="detail-hero">
-        <Link className="back-link" to="/projects">← 프로젝트 목록</Link>
-        <p className="eyebrow">Monitoring Project</p>
-        <h1>{project.title}</h1>
-        <p className="detail-lead">{project.subtitle}</p>
-        <dl className="detail-overview">
-          <div><dt>역할</dt><dd>{project.role}</dd></div>
-          <div><dt>기술</dt><dd>{project.technologies.join(' · ')}</dd></div>
-        </dl>
+        <Link className="back-link" to="/portfolio">← 포트폴리오</Link>
+        <div className="detail-document-bar"><span>CASE 01</span><span>ON-DEMAND AI MONITORING</span></div>
+        <div className="detail-title-row">
+          <div><h1>{project.title}</h1></div>
+          <p className="detail-lead">{project.subtitle}</p>
+        </div>
+        <div className="detail-summary-grid">
+          <figure className="detail-visual aura3d-dashboard-visual">
+            <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} />
+            <figcaption>{project.image.caption}</figcaption>
+          </figure>
+          <div className="detail-summary">
+            <dl className="detail-overview">
+              <div><dt>구분</dt><dd>{project.type}</dd></div>
+              <div><dt>기간</dt><dd>{project.period}</dd></div>
+              <div><dt>역할</dt><dd>{project.role}</dd></div>
+              <div><dt>기술</dt><dd>{project.technologies.join(' · ')}</dd></div>
+            </dl>
+            <div className="detail-actions"><PrintButton /></div>
+          </div>
+        </div>
+        <ChapterNav items={chapters} />
       </header>
 
       <div className="detail-body">
-        <section aria-labelledby="aura-problem">
-          <DetailHeading number="01" title="문제" id="aura-problem" />
-          <p>등록한 대상의 HTTP 상태를 주기적으로 확인하고, 상태 변화와 대응 정보를 한 흐름에서 파악할 수 있어야 했습니다.</p>
-        </section>
-
-        <section aria-labelledby="aura-constraint">
-          <DetailHeading number="02" title="제약" id="aura-constraint" />
-          <p>각 프로젝트가 서로 다른 주기로 실행되는 동안 동일 작업의 중복 실행을 막아야 했습니다. AI 안내는 상태가 바뀔 때 의미가 있으므로, 같은 상태에서 매번 외부 API를 호출하지 않는 기준도 필요했습니다.</p>
-        </section>
-
-        <section aria-labelledby="aura-choice">
-          <DetailHeading number="03" title="선택" id="aura-choice" />
-          <p>Spring의 <code>TaskScheduler</code>와 <code>ScheduledFuture</code>로 프로젝트별 작업 수명 주기를 관리하고, 실행 작업은 <code>ConcurrentHashMap</code>에서 추적하도록 구성했습니다. 모니터링 결과는 JPA로 이력을 남기고 HTTP 상태가 변할 때만 Gemini를 호출하는 방식을 선택했습니다.</p>
-        </section>
-
-        <section aria-labelledby="aura-implementation">
-          <DetailHeading number="04" title="구현" id="aura-implementation" />
-          <div className="implementation-list">
-            <div><h3>프로젝트 API</h3><p>모니터링 프로젝트를 등록하고 목록을 조회하며 삭제할 수 있는 REST API를 구성했습니다.</p></div>
-            <div><h3>스케줄 생명주기</h3><p><code>ScheduledFuture</code>를 보관해 작업을 취소할 수 있게 하고, <code>ConcurrentHashMap</code>으로 같은 프로젝트의 중복 스케줄 등록을 방지했습니다.</p></div>
-            <div><h3>상태 기반 AI 호출</h3><p>HTTP 상태가 이전 기록과 달라진 경우 Gemini 가이드를 요청하고, 동일 상태에서는 이전 AI 가이드를 재사용하도록 분기했습니다.</p></div>
-            <div><h3>이력과 시각화</h3><p>JPA로 모니터링 이력을 저장하고 React·Three.js 화면에서 상태를 구분해 표현했습니다.</p></div>
+        <section className="case-chapter" aria-labelledby="aura-problem">
+          <ChapterHeading number="01" title="반복 관제와 AI 호출의 분리" id="aura-problem" />
+          <div className="chapter-content chapter-copy-grid">
+            <p className="chapter-lead">텍스트 로그 중심의 관제에서는 운영자가 원시 HTTP 상태를 직접 해석해야 하고, 상태가 달라지지 않아도 AI를 반복 호출하면 외부 API 사용량이 계속 누적됩니다.</p>
+            <ul className="chapter-points">
+              <li>사용자가 확인할 때만 대상별 스캔을 시작·중지</li>
+              <li>동일 프로젝트의 중복 스캔 등록 방지</li>
+              <li>상태 수집과 비용이 발생하는 AI 분석 분리</li>
+              <li>상태 이력·AI 가이드·3D 화면의 갱신 기준 통일</li>
+            </ul>
           </div>
         </section>
 
-        <section aria-labelledby="aura-verification">
-          <DetailHeading number="05" title="검증" id="aura-verification" />
-          <p>등록·목록·삭제 API 흐름, 프로젝트별 스케줄 생성과 취소, 같은 프로젝트의 중복 실행 방지, HTTP 상태 변화 여부에 따른 Gemini 호출 분기를 핵심 확인 대상으로 두었습니다. 부하 환경에 대한 검증은 완료되지 않았습니다.</p>
+        <section className="case-chapter" aria-labelledby="aura-architecture">
+          <ChapterHeading number="02" title="상태 전이로 연결한 실행·분석 제어" id="aura-architecture" />
+          <div className="chapter-content">
+            <p className="chapter-lead">사용자 요청과 스캔 작업의 생명주기를 연결하고, 최신 JPA 이력과 현재 응답을 비교해 Gemini 호출 조건을 분리한 구조</p>
+            <ol className="architecture-flow" aria-label="Aura3D 처리 흐름">
+              <li><span>01</span><strong>사용자 요청</strong><small>스캔 시작·중지</small></li>
+              <li><span>02</span><strong>동적 스케줄</strong><small>주기적 HTTP 확인</small></li>
+              <li><span>03</span><strong>상태 비교</strong><small>JPA 최신 이력 기준</small></li>
+              <li><span>04</span><strong>조건부 AI</strong><small>상태 전이 시 Gemini</small></li>
+              <li><span>05</span><strong>3D 표현</strong><small>상태·가이드 연결</small></li>
+            </ol>
+            <EvidencePlaceholder title="프로젝트 등록·스캔 제어 화면" description="프로젝트 URL 등록, 스캔 시작·중지 상태와 대상별 실행 여부가 함께 보이는 개발 화면을 배치하세요." />
+          </div>
         </section>
 
-        <section aria-labelledby="aura-result">
-          <DetailHeading number="06" title="결과" id="aura-result" />
-          <p>프로젝트 관리, 주기적 상태 확인, 상태 이력 저장, 변화 시 안내 생성, 화면 상태 표현을 하나의 모니터링 흐름으로 연결했습니다. 같은 상태에서는 저장된 가이드를 재사용하도록 외부 호출 조건을 제한했습니다.</p>
+        <section className="case-chapter" aria-labelledby="aura-implementation">
+          <ChapterHeading number="03" title="코드로 관리한 스케줄 생명주기와 AI 호출 조건" id="aura-implementation" />
+          <div className="chapter-content">
+            <div className="implementation-list">
+              <div><p>01</p><h3>관제 대상 REST API</h3><span>등록·조회·삭제와 대상별 스캔 제어 API 구현을 통해 자원 중심의 엔드포인트 설계 경험 확보</span></div>
+              <div><p>02</p><h3>TaskScheduler</h3><span><code>ScheduledFuture</code> 보관 구조를 통해 실행 중인 주기 작업까지 취소하는 생명주기 제어 기술 적용</span></div>
+              <div><p>03</p><h3>중복 실행 방지</h3><span><code>ConcurrentHashMap</code>으로 활성 작업을 추적해 동일 프로젝트의 중복 스캔 등록 차단</span></div>
+              <div><p>04</p><h3>상태 전이 기반 Gemini</h3><span>새 상태에서만 가이드를 생성하고 동일 상태에서는 기존 결과를 재사용해 불필요한 외부 API 호출 억제</span></div>
+              <div><p>05</p><h3>JPA 모니터링 이력</h3><span>상태 전이와 AI 가이드를 함께 저장해 비교 로직과 화면 조회가 같은 기준을 사용하는 구조 확보</span></div>
+              <div><p>06</p><h3>React·Three.js</h3><span>HTTP 상태와 대응 정보를 연결해 백엔드 관제 데이터를 3D 비서 상태로 시각화</span></div>
+            </div>
+            <figure className="data-model-evidence">
+              <img
+                src={`${import.meta.env.BASE_URL}images/projects/aura3d-erd.png`}
+                alt="Aura3D의 target_project와 monitoring_history가 일대다 관계로 연결된 데이터베이스 ERD"
+                loading="lazy"
+              />
+              <figcaption>개발 단계 ERD — 관제 대상별 상태 코드·확인 시점·AI 가이드를 1:N 모니터링 이력으로 관리</figcaption>
+            </figure>
+            <div className="evidence-grid">
+              <EvidencePlaceholder title="HTTP 상태 전이 화면" description="동일 대상의 이전 상태와 변경된 상태, 수집 시점이 함께 보이는 모니터링 이력 화면을 배치하세요." />
+              <EvidencePlaceholder title="Gemini 가이드 생성·재사용 화면" description="최초 또는 상태 변경 시 생성된 가이드와 동일 상태에서 재사용되는 결과를 비교할 수 있는 화면을 배치하세요." />
+            </div>
+          </div>
         </section>
 
-        <section className="limitations" aria-labelledby="aura-limit">
-          <DetailHeading number="07" title="한계" id="aura-limit" />
-          <p>인증과 사용자별 권한 격리는 완성되지 않았습니다. 고동시성·대규모 부하 테스트도 완료하지 않아 처리 규모나 안정성을 수치로 주장하지 않습니다.</p>
+        <section className="case-chapter" aria-labelledby="aura-result">
+          <ChapterHeading number="04" title="상태 변화에만 반응하는 AI 관제 흐름" id="aura-result" />
+          <div className="chapter-content result-layout">
+            <p className="chapter-lead">사용자 요청 기반 스캔부터 상태 수집, 전이 감지, AI 가이드와 3D 표현까지 연결한 관제 파이프라인 구축</p>
+            <ul className="result-list">
+              <li><strong>호출 제어</strong><span>동일 상태에서 저장된 분석 결과를 재사용해 반복 Gemini 호출 제거</span></li>
+              <li><strong>동작 검증</strong><span>CRUD·스캔 제어·중복 작업 방지·상태별 AI 분기 검증을 통한 핵심 동작의 일관성 확인</span></li>
+              <li><strong>시각적 대응</strong><span>HTTP 상태와 AI 가이드를 3D 비서 상태로 연결해 원시 응답 해석 단계 축소</span></li>
+            </ul>
+          </div>
         </section>
       </div>
     </article>
   )
 }
 
-type DetailHeadingProps = { number: string; title: string; id: string }
+type ChapterHeadingProps = { number: string; title: string; id: string }
 
-function DetailHeading({ number, title, id }: DetailHeadingProps) {
-  return <header className="detail-section-heading"><p>{number}</p><h2 id={id}>{title}</h2></header>
+function ChapterHeading({ number, title, id }: ChapterHeadingProps) {
+  return <header className="chapter-heading"><p>{number}</p><h2 id={id} tabIndex={-1}>{title}</h2></header>
 }
 
 export default Aura3D
