@@ -5,7 +5,7 @@ import './Resume.css'
 const skillGroups = [
   { title: 'Backend', detail: 'Java 21·8 · Spring Boot 3.x · Spring MVC 4.3 · JPA · MyBatis · REST API' },
   { title: 'Data', detail: 'MySQL · Oracle · 관계형 데이터 모델링 · SQL' },
-  { title: 'AI', detail: 'Gemini API · 상태 전이 기반 호출 제어 · 업무 자동화 · 자연어 검색 품질검증' },
+  { title: 'AI', detail: 'Gemini API · 상태 전이 기반 호출 제어 · 기존 가이드 재사용 · 자연어 검색 품질검증' },
   { title: 'Infra', detail: 'AWS EC2·RDS · Linux · Apache Tomcat' },
   { title: 'Frontend', detail: 'React · JavaScript · JSP·JSTL · HTML·CSS · Three.js' },
   { title: 'Collaboration', detail: 'Git · GitHub · 일정·이슈·운영 절차 문서화' },
@@ -62,12 +62,12 @@ function Resume() {
           </section>
 
           <section className="resume-block" aria-labelledby="resume-education">
-            <ResumeHeading number="02" title="교육 및 자격" id="resume-education" />
+            <ResumeHeading number="02" title="교육 및 자격증" id="resume-education" />
             <div className="resume-education">
-              <p><strong>KG ITBANK</strong><span>AWS 클라우드 활용 웹 융합 SW 개발자 양성과정 720시간</span><time>2023.07–2024.01</time></p>
-              <p><strong>KG ITBANK</strong><span>IT 통합 개발 기초과정 360시간</span></p>
+              <p><strong>KG ITBANK</strong><span>AWS 클라우드 활용 웹 융합 SW 개발자 양성과정 · 720시간</span><time>2023.07–2024.01</time></p>
+              <p><strong>KG ITBANK</strong><span>IT 통합 개발 기초 과정 · 360시간</span><time>2023.03–2023.06</time></p>
               <p><strong>동아대학교</strong><span>에너지자원공학과 학사</span><time>2013.03–2021.02</time></p>
-              <p><strong>자격</strong><span>컴퓨터활용능력 2급 · 워드프로세서 · ITQ</span></p>
+              <p><strong>자격증</strong><span>컴퓨터활용능력 2급 · 워드프로세서 · ITQ</span></p>
             </div>
           </section>
         </div>
@@ -86,18 +86,19 @@ function Resume() {
               <article>
                 <header><div><h3>Aura3D</h3><p>개인 프로젝트</p></div><time>2025.12–2026.01</time></header>
                 <ul>
+                  <li>상태 전이 감지와 기존 가이드 재사용을 통한 Gemini 호출 제어</li>
+                  <li>여러 URL을 동시에 관리하기 위한 도구에서 3D 관제·AI 대응 가이드까지 확장</li>
                   <li>관리·스캔 제어·상태 조회 REST API</li>
                   <li>Java 21 Virtual Thread·TaskScheduler·ConcurrentHashMap 기반 작업 생명주기</li>
-                  <li>상태 전이 기반 Gemini 호출 제어, 호출량 약 90% 감소와 불필요한 토큰 사용 절감</li>
                 </ul>
               </article>
               <article>
                 <header><div><h3>MZ 전국 맛집 정보 플랫폼</h3><p>4인 팀장</p></div><time>2023.09–2024.01</time></header>
                 <ul>
+                  <li>일정·브랜치 조율과 기능별 결과물 통합</li>
                   <li>Oracle DB 설계와 MyBatis SQL Mapper·전체 SQL 작업 전담</li>
                   <li>CRUD·지역/카테고리 복합 검색·OFFSET/FETCH 페이징 쿼리</li>
                   <li>회원가입, Kakao Map API와 AWS EC2·RDS 배포</li>
-                  <li>일정·브랜치 조율과 팀 결과물 통합</li>
                 </ul>
               </article>
             </div>
@@ -105,10 +106,10 @@ function Resume() {
           </section>
 
           <section className="resume-block" aria-labelledby="resume-ai">
-            <ResumeHeading number="05" title="AI 활용" id="resume-ai" />
+            <ResumeHeading number="05" title="AI 연동 및 품질검증" id="resume-ai" />
             <dl className="resume-ai-list">
-              <div><dt>제품 연동</dt><dd>HTTP 상태 변화와 Gemini 대응 가이드 생성을 조건부로 연결한 외부 AI API 연동</dd></div>
-              <div><dt>업무 자동화</dt><dd>반복적인 입력·판단·정리 과정에 AI를 적용하고 생성 결과를 후속 업무에 재사용</dd></div>
+              <div><dt>호출 조건 설계</dt><dd>HTTP 상태가 변할 때만 Gemini 대응 가이드를 생성하도록 외부 AI API 호출 조건 구현</dd></div>
+              <div><dt>결과 재사용</dt><dd>동일 상태에서는 저장된 기존 가이드를 사용해 반복 호출과 불필요한 토큰 사용 억제</dd></div>
               <div><dt>품질검증</dt><dd>특허검색 AX 품질검증 테스터로 참여해 평가 기준에 따른 자연어 검색 적합성·이상 사례 검증</dd></div>
             </dl>
           </section>

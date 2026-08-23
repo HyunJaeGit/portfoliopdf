@@ -5,6 +5,7 @@ const navigationItems = [
   { to: '/', label: '홈', end: true },
   { to: '/resume', label: '이력서', end: true },
   { to: '/portfolio', label: '포트폴리오', end: false },
+  { to: '/print', label: 'PDF 다운로드', end: true, mobileOnly: true },
 ]
 
 function Navigation() {
@@ -43,8 +44,8 @@ function Navigation() {
         <span aria-hidden="true">{isOpen ? '닫기' : '열기'}</span>
       </button>
       <ul className={isOpen ? 'nav-list is-open' : 'nav-list'} id="primary-navigation">
-        {navigationItems.map(({ to, label, end }) => (
-          <li key={to}>
+        {navigationItems.map(({ to, label, end, mobileOnly }) => (
+          <li key={to} className={mobileOnly ? 'nav-mobile-only' : undefined}>
             <NavLink to={to} end={end}>
               {label}
             </NavLink>

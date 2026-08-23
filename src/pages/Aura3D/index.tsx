@@ -49,7 +49,7 @@ function Aura3D() {
         <section className="case-chapter" aria-labelledby="aura-problem">
           <ChapterHeading number="01" title="반복 관제와 AI 호출의 분리" id="aura-problem" />
           <div className="chapter-content chapter-copy-grid">
-            <p className="chapter-lead">텍스트 로그 중심의 관제에서는 운영자가 원시 HTTP 상태를 직접 해석해야 하고, 상태가 달라지지 않아도 AI를 반복 호출하면 외부 API 사용량이 계속 누적됩니다.</p>
+            <p className="chapter-lead">여러 URL의 상태를 동시에 관리하기 위한 도구로 시작했습니다. 대상이 늘어나면서 스캔 작업을 개별 제어하고 상태 이력을 한곳에서 확인하는 구조가 필요해졌고, 이후 3D 상태 표현과 조건부 AI 대응 가이드까지 확장했습니다.</p>
             <ul className="chapter-points">
               <li>사용자가 확인할 때만 대상별 스캔을 시작·중지</li>
               <li>동일 프로젝트의 중복 스캔 등록 방지</li>
@@ -84,7 +84,7 @@ function Aura3D() {
               <div><p>01</p><h3>관제 대상 REST API</h3><span>등록·조회·삭제와 대상별 스캔 제어 API 구현을 통해 자원 중심의 엔드포인트 설계 경험 확보</span></div>
               <div><p>02</p><h3>Virtual Thread 스케줄러</h3><span>Java 21 Virtual Thread 기반 <code>TaskScheduler</code>와 <code>ScheduledFuture</code> 보관 구조로 주기 작업 실행·취소 제어</span></div>
               <div><p>03</p><h3>중복 실행 방지</h3><span><code>ConcurrentHashMap</code>으로 활성 작업을 추적해 동일 프로젝트의 중복 스캔 등록 차단</span></div>
-              <div><p>04</p><h3>상태 전이 기반 Gemini</h3><span>상태가 변할 때만 분석을 요청하고 동일 상태에서는 기존 가이드를 재사용해 호출량 약 90% 감소·불필요한 토큰 사용 억제</span></div>
+              <div><p>04</p><h3>상태 전이 기반 Gemini</h3><span>상태가 변할 때만 분석을 요청하고 동일 상태에서는 저장된 기존 가이드를 재사용하도록 호출 조건 구성</span></div>
               <div><p>05</p><h3>JPA 모니터링 이력</h3><span>상태 전이와 AI 가이드를 함께 저장해 비교 로직과 화면 조회가 같은 기준을 사용하는 구조 확보</span></div>
               <div><p>06</p><h3>React·Three.js</h3><span>HTTP 상태와 대응 정보를 연결해 백엔드 관제 데이터를 3D 비서 상태로 시각화</span></div>
             </div>

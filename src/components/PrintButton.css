@@ -18,3 +18,7 @@
   color: var(--navy);
   background: #f3f5f7;
 }
+
+@media (max-width: 720px) {
+  .print-button { min-height: 44px; }
+}

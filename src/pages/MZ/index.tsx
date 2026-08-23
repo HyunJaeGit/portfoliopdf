@@ -50,12 +50,11 @@ function MZ() {
           <ChapterHeading number="01" title="전국 음식점 정보를 연결한 탐색 플랫폼" id="mz-goal" />
           <div className="chapter-content">
             <div className="chapter-copy-grid">
-              <p className="chapter-lead">해외 관광객의 탐색 과정을 기준으로 다국어 UI, 지역·카테고리 검색, 지도와 회원 기능을 연결한 전국 단위 음식점 정보 플랫폼 설계</p>
+              <p className="chapter-lead">전국 음식점 데이터를 중심으로 Oracle 관계형 모델과 MyBatis 데이터 접근 계층을 설계했습니다. 해외 관광객이 지역·카테고리로 검색한 결과를 목록과 Kakao 지도에서 이어서 탐색하도록 회원 기능, 검색, 페이징, 배포까지 하나의 서비스 흐름으로 구성했습니다.</p>
               <ul className="chapter-points">
                 <li>전국 단위 음식점·지역·카테고리 데이터 구조화</li>
                 <li>검색 결과와 지도 위치를 같은 탐색 흐름으로 연결</li>
                 <li>Java 8·Spring MVC·JSP 기반 서버 렌더링 구조 활용</li>
-                <li>4인의 기능 브랜치와 결과물을 하나의 플랫폼으로 통합</li>
               </ul>
             </div>
             <figure className="chapter-wide-evidence">
@@ -68,7 +67,7 @@ function MZ() {
         <section className="case-chapter" aria-labelledby="mz-data">
           <ChapterHeading number="02" title="관계형 데이터와 동적 SQL 기반 복합 검색" id="mz-data" />
           <div className="chapter-content">
-            <p className="chapter-lead">Oracle 관계형 데이터 모델을 설계하고 MyBatis SQL Mapper와 전체 SQL 작업을 전담. CRUD부터 지역·카테고리 복합 검색, OFFSET/FETCH 페이징까지 데이터 접근 계층 구현</p>
+            <p className="chapter-lead">Oracle 관계형 데이터 모델과 MyBatis 데이터 접근 계층을 기반으로 CRUD부터 지역·카테고리 복합 검색, OFFSET/FETCH 페이징까지 구현</p>
             <div className="implementation-list compact-list">
               <div><p>01</p><h3>Oracle 데이터 모델</h3><span>음식점·지역·카테고리 관계를 중심으로 검색과 서비스 기능을 지탱하는 데이터 모델 설계</span></div>
               <div><p>02</p><h3>SQL Mapper 전담</h3><span>MyBatis Mapper와 CRUD·검색 SQL 전체를 작성하고 선택 조건 기반 동적 SQL로 단일·복합 검색 통합</span></div>
@@ -80,7 +79,7 @@ function MZ() {
                 <img src={`${import.meta.env.BASE_URL}images/projects/mz-erd.jpg`} alt="음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 MZ 데이터베이스 ERD" loading="lazy" />
                 <figcaption>개발 단계 ERD — 음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 관계형 데이터 구조</figcaption>
               </figure>
-              <figure className="evidence-figure">
+              <figure className="evidence-figure mz-signup-evidence">
                 <img src={`${import.meta.env.BASE_URL}images/projects/mz-signup.png`} alt="아이디, 비밀번호, 닉네임, 이메일, 생년월일, 전화번호, 국적과 성별을 입력하는 MZ 회원가입 화면" loading="lazy" />
                 <figcaption>개발·테스트 환경 화면 — 회원 입력 정보를 검증하고 Oracle 계정 데이터로 저장하는 회원가입 진입 화면</figcaption>
               </figure>
@@ -129,7 +128,7 @@ function MZ() {
             <ul className="result-list">
               <li><strong>서비스 통합</strong><span>관계형 데이터·복합 검색·페이지 조회·지도 탐색을 하나의 플랫폼 사용자 흐름으로 연결</span></li>
               <li><strong>배포 확인</strong><span>EC2의 Tomcat 구동과 RDS Oracle 연결을 통한 애플리케이션·DB 분리 배포 경험 확보</span></li>
-              <li><strong>팀 리딩</strong><span>일정·역할 조율과 브랜치 병합을 통해 4인의 결과물을 하나의 서비스로 통합</span></li>
+              <li><strong>팀 리딩</strong><span>일정·역할 조율과 브랜치 병합을 통해 기능별 결과물을 하나의 서비스로 통합</span></li>
             </ul>
           </div>
         </section>

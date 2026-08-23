@@ -14,7 +14,7 @@ const capabilities = [
     number: '02',
     label: 'AI Integration',
     title: 'AI API 연동',
-    description: 'Aura3D의 상태 전이 기반 Gemini 호출 제어로 API 호출량 약 90% 감소·불필요한 토큰 사용 억제',
+    description: 'Aura3D에서 HTTP 상태가 변할 때만 Gemini를 호출하고 동일 상태에서는 저장된 가이드를 재사용',
     stack: 'Gemini API · State Transition · Automation',
   },
   {
@@ -31,7 +31,7 @@ function Home() {
     <div className="home-page">
       <section className="case-cover" aria-labelledby="hero-title">
         <div className="cover-index" aria-hidden="true">
-          <span>BACKEND PORTFOLIO</span>
+          <span>PORTFOLIO</span>
           <strong>2026</strong>
         </div>
         <div className="cover-main">
@@ -47,7 +47,7 @@ function Home() {
           </dl>
         </div>
         <div className="cover-summary">
-          <p>Java·Spring 기반 REST API, 관계형 데이터 모델과 AWS 배포 경험. 개발·운영·AI 품질검증에서 발견한 문제를 재현 가능한 기술 정보와 동작하는 백엔드 로직으로 전환합니다.</p>
+          <p>REST API, 관계형 데이터 모델과 AWS 배포 경험. 개발·운영·AI 품질검증에서 발견한 문제를 재현 가능한 기술 정보와 동작하는 백엔드 로직으로 전환합니다.</p>
           <div className="cover-actions">
             <Link className="cover-button cover-button-light" to="/resume">이력서 보기</Link>
             <Link className="cover-button" to="/portfolio">포트폴리오 보기</Link>
