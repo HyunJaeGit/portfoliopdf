@@ -31,7 +31,7 @@
 .resume-timeline h3, .resume-projects h3 { margin: 0; color: var(--navy); font-size: 0.96rem; }
 .resume-timeline header p, .resume-projects header p { margin: 4px 0 0; color: var(--muted); font-size: 0.7rem; line-height: 1.45; }
 .resume-timeline time, .resume-projects time { flex: none; color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; }
-.resume-timeline ul, .resume-projects ul { display: grid; gap: 6px; margin: 14px 0 0; padding-left: 17px; color: var(--charcoal); font-size: 0.76rem; line-height: 1.62; word-break: keep-all; }
+.resume-timeline ul, .resume-projects ul { display: grid; gap: 6px; margin: 14px 0 0; padding-left: 17px; color: var(--charcoal); font-size: 0.76rem; line-height: 1.62; overflow-wrap: anywhere; word-break: keep-all; }
 .resume-timeline li::marker, .resume-projects li::marker { color: var(--accent); }
 
 .resume-education { display: grid; margin-top: 4px; }
@@ -41,16 +41,11 @@
 .resume-education time { color: var(--muted); font-family: var(--font-mono); font-size: 0.63rem; }
 
 .resume-skills { display: grid; margin: 4px 0 0; }
-.resume-skills div { display: grid; grid-template-columns: 78px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.resume-skills div { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
 .resume-skills dt { color: var(--navy); font-size: 0.7rem; font-weight: 800; }
-.resume-skills dd { margin: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.52; }
+.resume-skills dd { min-width: 0; margin: 0; color: var(--muted); font-size: 0.7rem; line-height: 1.52; overflow-wrap: anywhere; }
 .resume-portfolio-link { display: inline-block; margin-top: 18px; color: var(--accent); font-size: 0.76rem; font-weight: 800; text-underline-offset: 4px; }
 .resume-portfolio-link:hover, .resume-portfolio-link:focus-visible { background: #eee8df; }
-.resume-ai-list { display: grid; margin: 4px 0 0; }
-.resume-ai-list div { padding: 12px 0; border-bottom: 1px solid var(--line); }
-.resume-ai-list dt { color: var(--accent); font-size: 0.7rem; font-weight: 800; }
-.resume-ai-list dd { margin: 5px 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.58; word-break: keep-all; }
-
 @media (max-width: 760px) {
   .resume-identity, .resume-columns { grid-template-columns: 1fr; }
   .resume-identity { gap: 20px; }
@@ -58,14 +53,14 @@
   .resume-focus { grid-template-columns: 1fr; }
   .resume-focus article + article { border-top: 1px solid var(--line); border-left: 0; }
   .resume-columns { gap: 44px; }
+  .resume-timeline article > header, .resume-projects article > header { display: grid; gap: 5px; }
+  .resume-education p, .resume-skills div { grid-template-columns: 1fr; gap: 5px; }
+  .resume-education strong { grid-row: auto; }
 }
 
 @media (max-width: 420px) {
   .resume-document-bar { align-items: flex-start; flex-direction: column; gap: 4px; }
   .resume-contact { display: grid; }
-  .resume-timeline article > header, .resume-projects article > header { display: grid; gap: 5px; }
-  .resume-education p, .resume-skills div { grid-template-columns: 1fr; gap: 5px; }
-  .resume-education strong { grid-row: auto; }
 }
 
 @media screen {
@@ -79,8 +74,6 @@
   .resume-education time { font-size: 0.72rem; }
   .resume-skills dt, .resume-skills dd { font-size: 0.8rem; }
   .resume-portfolio-link { font-size: 0.82rem; }
-  .resume-ai-list dt { font-size: 0.78rem; }
-  .resume-ai-list dd { font-size: 0.8rem; }
 }
 
 @media print {
@@ -91,7 +84,7 @@
   .resume-identity h1 { font-size: 26pt; }
   .resume-lead { font-size: 9pt; line-height: 1.55; }
   .resume-cover-footer { padding-top: 7px; }
-  .resume-focus { display: none; }
+  .resume-focus { display: grid; margin-top: 10px; }
   .resume-focus article { padding: 7px 8px; }
   .resume-focus span { font-size: 8pt; line-height: 1.42; }
   .resume-columns { grid-template-columns: minmax(0, 1.08fr) minmax(250px, 0.92fr); gap: 20px; margin-top: 12px; }
@@ -101,12 +94,7 @@
   .resume-heading { padding-bottom: 7px; break-after: avoid; }
   .resume-timeline, .resume-projects { gap: 9px; margin-top: 7px; }
   .resume-timeline ul, .resume-projects ul { gap: 4px; margin-top: 6px; font-size: 8.3pt; line-height: 1.46; }
-  .resume-education p, .resume-skills div, .resume-ai-list div { padding-block: 5px; }
-  .resume-skills dd, .resume-ai-list dd { line-height: 1.4; }
-  .resume-ai-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .resume-ai-list div { padding: 6px 8px; border-bottom: 1px solid var(--line); }
-  .resume-ai-list div + div { border-left: 1px solid var(--line); }
-  .resume-ai-list dt, .resume-ai-list dd { font-size: 7.8pt; }
-  .resume-ai-list dd { line-height: 1.32; }
+  .resume-education p, .resume-skills div { padding-block: 5px; }
+  .resume-skills dd { line-height: 1.4; }
   .resume-portfolio-link { display: none; }
 }
