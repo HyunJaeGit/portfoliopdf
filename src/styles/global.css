@@ -6,7 +6,7 @@
   text-rendering: optimizeLegibility;
   --navy: #172231;
   --charcoal: #252525;
-  --muted: #62605d;
+  --muted: #4d4b48;
   --accent: #841b25;
   --accent-dark: #68131b;
   --line: #d9d4cc;
@@ -30,6 +30,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-weight: 450;
 }
 
 button,
@@ -148,7 +149,7 @@ a:focus-visible {
 }
 
 .main-content {
-  padding-block: clamp(56px, 8vw, 88px);
+  padding-block: clamp(42px, 6vw, 64px);
 }
 
 .page-intro {
@@ -160,9 +161,9 @@ a:focus-visible {
 .eyebrow {
   margin: 0 0 14px;
   color: var(--accent);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 750;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -185,8 +186,8 @@ h1,
 .page-intro > p:not(.eyebrow) {
   margin: 24px 0 0;
   color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  line-height: 1.7;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.72;
   word-break: keep-all;
 }
 

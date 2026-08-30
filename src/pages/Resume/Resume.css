@@ -1,4 +1,47 @@
 .resume-page { max-width: 1000px; margin-inline: auto; }
+.resume-print-layout { display: grid; gap: 96px; }
+.resume-print-sheet { position: relative; min-width: 0; padding: 34px; border: 1px solid var(--line); background: #fff; }
+.resume-print-profile-header { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; padding-bottom: 24px; border-bottom: 2px solid var(--navy); }
+.resume-print-profile-header > div:first-child > p, .resume-print-page-header > p { margin: 0 0 12px; color: var(--accent); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
+.resume-print-profile-header h1 { font-size: 3rem; }
+.resume-print-profile-header > div:first-child > strong { display: block; margin-top: 8px; color: var(--accent); }
+.resume-print-profile-header address { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 16px; font-style: normal; }
+.resume-print-profile-header address a { color: var(--accent); font-family: var(--font-mono); font-size: 0.74rem; }
+.resume-print-profile-header > div:last-child > p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.72; word-break: keep-all; }
+.resume-print-capabilities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; border: 1px solid var(--line); }
+.resume-print-capabilities article { min-width: 0; padding: 16px; }
+.resume-print-capabilities article + article { border-left: 1px solid var(--line); }
+.resume-print-capabilities span, .resume-print-section-title > p { color: var(--accent); font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; }
+.resume-print-capabilities h2 { margin: 8px 0 0; color: var(--navy); font-size: 0.92rem; }
+.resume-print-capabilities p { margin: 8px 0 0; color: var(--muted); font-size: 0.75rem; line-height: 1.55; word-break: keep-all; }
+.resume-print-experience-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 42px; margin-top: 36px; }
+.resume-print-section-title { padding-bottom: 10px; border-bottom: 2px solid var(--navy); }
+.resume-print-section-title > p { margin: 0 0 7px; }
+.resume-print-section-title h2 { margin: 0; color: var(--navy); font-size: 1.25rem; }
+.resume-print-career, .resume-print-projects { display: grid; gap: 22px; margin-top: 16px; }
+.resume-print-career article > header, .resume-print-projects article > header { display: flex; justify-content: space-between; gap: 14px; }
+.resume-print-career h3, .resume-print-projects h3, .resume-print-education h3, .resume-print-leadership h3 { margin: 0; color: var(--navy); font-size: 0.92rem; }
+.resume-print-career header p, .resume-print-projects header p { margin: 4px 0 0; color: var(--muted); font-size: 0.7rem; }
+.resume-print-career time, .resume-print-projects time, .resume-print-education time, .resume-print-leadership time { flex: none; color: var(--muted); font-family: var(--font-mono); font-size: 0.64rem; }
+.resume-print-career ul, .resume-print-projects ul { display: grid; gap: 6px; margin: 12px 0 0; padding-left: 17px; color: var(--charcoal); font-size: 0.76rem; line-height: 1.58; word-break: keep-all; }
+.resume-print-career li::marker, .resume-print-projects li::marker { color: var(--accent); }
+.resume-print-skills { display: grid; margin: 6px 0 0; }
+.resume-print-skills div { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.resume-print-skills dt { color: var(--navy); font-size: 0.74rem; font-weight: 800; }
+.resume-print-skills dd { margin: 5px 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.52; }
+.resume-print-page-header { padding-bottom: 22px; border-bottom: 2px solid var(--navy); }
+.resume-print-page-header h1 { font-size: 2rem; }
+.resume-print-background-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; margin-top: 34px; }
+.resume-print-education { display: grid; margin-top: 6px; }
+.resume-print-education article { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.resume-print-education time { display: block; margin-bottom: 5px; }
+.resume-print-education p, .resume-print-leadership p { margin: 6px 0 0; color: var(--muted); font-size: 0.75rem; line-height: 1.52; word-break: keep-all; }
+.resume-print-leadership { margin-top: 38px; }
+.resume-print-leadership > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.resume-print-leadership article { min-width: 0; padding: 16px 16px 16px 0; }
+.resume-print-leadership article + article { padding-left: 16px; border-left: 1px solid var(--line); }
+.resume-print-leadership time { display: block; margin-bottom: 7px; }
+.resume-print-sheet > .print-sheet-footer { margin-top: 36px; }
 .resume-cover { padding-bottom: 34px; border-bottom: 2px solid var(--navy); }
 .resume-document-bar { display: flex; justify-content: space-between; gap: 24px; padding: 11px 15px; color: #f7f3ed; background: var(--charcoal); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; }
 .resume-identity { display: grid; grid-template-columns: minmax(250px, 0.42fr) minmax(0, 0.58fr); gap: clamp(32px, 6vw, 68px); align-items: end; padding-block: clamp(32px, 5vw, 48px); }
@@ -64,19 +107,62 @@
 }
 
 @media screen {
-  .resume-contact a { font-size: 0.78rem; }
-  .resume-focus span { font-size: 0.8rem; }
-  .resume-timeline header p, .resume-projects header p { font-size: 0.78rem; }
-  .resume-timeline time, .resume-projects time { font-size: 0.72rem; }
-  .resume-timeline ul, .resume-projects ul { font-size: 0.84rem; }
-  .resume-education strong { font-size: 0.78rem; }
-  .resume-education span { font-size: 0.8rem; }
-  .resume-education time { font-size: 0.72rem; }
-  .resume-skills dt, .resume-skills dd { font-size: 0.8rem; }
+  .resume-contact a { font-size: 0.82rem; }
+  .resume-focus span { font-size: 0.86rem; line-height: 1.62; }
+  .resume-timeline header p, .resume-projects header p { font-size: 0.82rem; }
+  .resume-timeline time, .resume-projects time { font-size: 0.76rem; }
+  .resume-timeline ul, .resume-projects ul { font-size: 0.9rem; line-height: 1.66; }
+  .resume-education strong { font-size: 0.82rem; }
+  .resume-education span { font-size: 0.86rem; }
+  .resume-education time { font-size: 0.76rem; }
+  .resume-skills dt, .resume-skills dd { font-size: 0.86rem; }
   .resume-portfolio-link { font-size: 0.82rem; }
 }
 
 @media print {
+  .resume-print-layout { display: block; }
+  .resume-print-sheet { display: grid; min-height: calc(297mm - 20mm); grid-template-rows: auto auto 1fr auto; padding: 7mm; border: 0; }
+  .resume-print-sheet + .resume-print-sheet { break-before: page; page-break-before: always; }
+  .resume-print-profile-header { grid-template-columns: 0.8fr 1.2fr; gap: 9mm; padding-bottom: 4mm; }
+  .resume-print-profile-header > div:first-child > p, .resume-print-page-header > p { margin-bottom: 2mm; font-size: 7pt; }
+  .resume-print-profile-header h1 { font-size: 28pt; }
+  .resume-print-profile-header > div:first-child > strong { margin-top: 1.5mm; font-size: 10pt; }
+  .resume-print-profile-header address { gap: 1mm 4mm; margin-bottom: 2mm; }
+  .resume-print-profile-header address a { font-size: 8pt; }
+  .resume-print-profile-header > div:last-child > p { font-size: 9pt; line-height: 1.55; }
+  .resume-print-capabilities { margin-top: 4mm; }
+  .resume-print-capabilities article { padding: 3mm; }
+  .resume-print-capabilities h2 { margin-top: 1.5mm; font-size: 9pt; }
+  .resume-print-capabilities p { margin-top: 1.5mm; font-size: 8pt; line-height: 1.45; }
+  .resume-print-experience-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 8mm; margin-top: 6mm; }
+  .resume-print-experience-grid > section { display: grid; grid-template-rows: auto 1fr; }
+  .resume-print-section-title { padding-bottom: 2mm; }
+  .resume-print-section-title > p { margin-bottom: 1mm; font-size: 7pt; }
+  .resume-print-section-title h2 { font-size: 14pt; }
+  .resume-print-career, .resume-print-projects { gap: 4mm; margin-top: 3mm; }
+  .resume-print-career { grid-template-rows: 1.75fr 1fr; }
+  .resume-print-career article { padding-block: 2mm; }
+  .resume-print-career h3, .resume-print-projects h3, .resume-print-education h3, .resume-print-leadership h3 { font-size: 9pt; }
+  .resume-print-career header p, .resume-print-projects header p { margin-top: 0.7mm; font-size: 7.5pt; }
+  .resume-print-career time, .resume-print-projects time, .resume-print-education time, .resume-print-leadership time { font-size: 7pt; }
+  .resume-print-career ul, .resume-print-projects ul { gap: 1mm; margin-top: 2mm; font-size: 8pt; line-height: 1.45; }
+  .resume-print-skills { grid-template-rows: repeat(4, 1fr); }
+  .resume-print-skills div { display: grid; align-content: center; padding: 2.2mm 0; }
+  .resume-print-skills dt { font-size: 8pt; }
+  .resume-print-skills dd { margin-top: 1mm; font-size: 7.5pt; line-height: 1.42; }
+  .resume-print-page-header { padding-bottom: 4mm; }
+  .resume-print-page-header h1 { font-size: 22pt; }
+  .resume-print-background-grid { min-height: 128mm; gap: 9mm; margin-top: 6mm; }
+  .resume-print-background-grid > section { display: grid; grid-template-rows: auto 1fr; }
+  .resume-print-education { grid-template-rows: repeat(4, 1fr); }
+  .resume-print-education article { display: grid; align-content: center; padding: 2.8mm 0; }
+  .resume-print-background-grid .resume-print-projects { grid-template-rows: repeat(2, 1fr); }
+  .resume-print-background-grid .resume-print-projects article { display: grid; align-content: center; }
+  .resume-print-education p, .resume-print-leadership p { margin-top: 1mm; font-size: 8pt; line-height: 1.45; }
+  .resume-print-leadership { margin-top: 8mm; }
+  .resume-print-leadership article { padding: 3mm 3mm 3mm 0; }
+  .resume-print-leadership article + article { padding-left: 3mm; }
+  .resume-print-sheet > .print-sheet-footer { align-self: end; margin-top: 5mm; }
   .resume-page { max-width: none; color: #171717; font-size: 8.5pt; }
   .resume-cover { padding-bottom: 12px; }
   .resume-document-bar { padding-block: 5px; print-color-adjust: exact; }

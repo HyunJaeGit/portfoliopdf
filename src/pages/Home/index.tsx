@@ -4,27 +4,26 @@ import './Home.css'
 
 const capabilities = [
   {
-    number: '01',
-    label: 'Backend Development',
     title: '백엔드 개발',
     description: 'Spring MVC·MyBatis와 Spring Boot·JPA 기반 REST API, 관계형 데이터 모델, 검색·스케줄링 로직 구현',
-    stack: 'Java · Spring · JPA · MyBatis · MySQL · Oracle',
+    stack: '주요 기술: Java, Spring, JPA, MyBatis, MySQL, Oracle',
   },
   {
-    number: '02',
-    label: 'AI Integration',
     title: 'AI API 연동',
     description: 'Aura3D에서 HTTP 상태가 변할 때만 Gemini를 호출하고 동일 상태에서는 저장된 가이드를 재사용',
-    stack: 'Gemini API · State Transition · Automation',
+    stack: '주요 구현: Gemini API, 상태 전이 감지, 호출 조건 제어',
   },
   {
-    number: '03',
-    label: 'Service Operations & AI QA',
     title: '운영 및 품질검증',
     description: '공공 교육 플랫폼 운영·유지보수의 장애 분류·개발사 이관과 특허검색 AX의 자연어 검색 품질검증',
-    stack: 'Service Operations · Issue Triage · Maintenance · AI Search QA',
+    stack: '관련 경험: 공공 교육 플랫폼 운영·유지보수, 특허검색 AX 품질검증',
   },
 ] as const
+
+const projectCaptions = {
+  aura3d: '프로젝트별 스캔 제어와 상태별 대응 가이드를 제공하는 관제 화면',
+  mz: '지역·카테고리 검색 결과와 음식점 위치를 함께 보여주는 지도 탐색 화면',
+} as const
 
 function Home() {
   return (
@@ -47,14 +46,16 @@ function Home() {
           </dl>
         </div>
         <div className="cover-summary">
-          <p>REST API, 관계형 데이터 모델과 AWS 배포 경험. 개발·운영·AI 품질검증에서 발견한 문제를 재현 가능한 기술 정보와 동작하는 백엔드 로직으로 전환합니다.</p>
+          <p>Java/Spring으로 REST API와 관계형 데이터 모델을 구현하고 AWS 환경에 배포,
+            공공 교육 플랫폼 운영과 AI 검색 품질검증 1차 테스팅 참여 경험을 바탕으로 
+            실제 사용 환경에서 발생하는 문제까지 고려해 개발</p>
           <div className="cover-actions">
             <Link className="cover-button cover-button-light" to="/resume">이력서 보기</Link>
             <Link className="cover-button" to="/portfolio">포트폴리오 보기</Link>
+            <a className="cover-button" href="https://github.com/HyunJaeGit" target="_blank" rel="noreferrer">GitHub</a>
           </div>
           <address className="cover-contact">
             <a href="mailto:guswo1118@gmail.com">guswo1118@gmail.com</a>
-            <a href="https://github.com/HyunJaeGit" target="_blank" rel="noreferrer">github.com/HyunJaeGit</a>
           </address>
         </div>
       </section>
@@ -63,10 +64,8 @@ function Home() {
         <CaseHeading number="01" title="개발 역량 및 스킬" id="capabilities-title" />
         <div className="capability-list">
           {capabilities.map((capability) => (
-            <article key={capability.number}>
-              <p className="capability-number">{capability.number}</p>
+            <article key={capability.title}>
               <div className="capability-copy">
-                <p className="capability-label">{capability.label}</p>
                 <h3>{capability.title}</h3>
                 <p>{capability.description}</p>
               </div>
@@ -79,15 +78,15 @@ function Home() {
       <section className="case-section" aria-labelledby="selected-work-title">
         <CaseHeading number="02" title="프로젝트" id="selected-work-title" to="/portfolio" />
         <div className="work-preview-list">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <Link className="work-preview-link" to={project.path} key={project.id} aria-label={`${project.title} 상세 페이지로 이동`}>
               <article className="work-preview">
                 <figure>
                   <img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} loading="lazy" />
-                  <figcaption>개발·테스트 환경 화면</figcaption>
+                  <figcaption>{projectCaptions[project.id]}</figcaption>
                 </figure>
                 <div className="work-preview-copy">
-                  <p className="work-index">PROJECT {String(index + 1).padStart(2, '0')}</p>
+                  <p className="work-index">{project.type}</p>
                   <h3>{project.title}</h3>
                   <p>{project.subtitle}</p>
                   <dl>
@@ -107,9 +106,9 @@ function Home() {
           <h2 id="record-title">주요 실무 경험</h2>
         </div>
         <dl>
-          <div><dt>한국교육과정평가원</dt><dd>고객사 프로젝트 · 공공 교육 포털 운영·유지보수 및 CBT 기술지원</dd></div>
-          <div><dt>한국지질자원연구원</dt><dd>직접 근무 · 연구 자료·현장 조사 정보 및 행정 업무 지원</dd></div>
-          <div><dt>특허검색 AX</dt><dd>케이원 프로젝트 · AI 자연어 검색 적합성·이상 사례 품질검증</dd></div>
+          <div><dt>케이원</dt><dd>한국교육과정평가원 종합상황실 · 공공 교육 포털 운영·개발사 협업 및 전국단위 CBT 시험 운영지원</dd></div>
+          <div><dt>한국지질자원연구원</dt><dd>연구실 연구 지원 및 기관 내 업무 지원 · 공공 연구기관 실무 경험</dd></div>
+          <div><dt>특허검색 AX</dt><dd>케이원 프로젝트 · AI 자연어 검색 적합성·이상 사례 품질검증 1차 테스팅 참여</dd></div>
         </dl>
       </section>
     </div>

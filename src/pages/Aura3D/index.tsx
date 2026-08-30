@@ -5,6 +5,7 @@ import { projects } from '../../content/projects'
 import '../project-detail.css'
 
 const project = projects[0]
+const mzProject = projects[1]
 const chapters = [
   { id: 'aura-problem', label: '문제 정의' },
   { id: 'aura-architecture', label: '설계 구조' },
@@ -12,7 +13,11 @@ const chapters = [
   { id: 'aura-result', label: '구현 결과' },
 ] as const
 
-function Aura3D() {
+type Aura3DProps = { portfolioPrint?: boolean }
+
+function Aura3D({ portfolioPrint = false }: Aura3DProps) {
+  if (portfolioPrint) return <Aura3DPrintLayout />
+
   return (
     <article className="project-detail">
       <header className="detail-hero">
@@ -119,6 +124,99 @@ function Aura3D() {
       </div>
     </article>
   )
+}
+
+function Aura3DPrintLayout() {
+  const pipeline = [
+    ['01', '사용자 요청', '대상별 스캔 시작·중지'],
+    ['02', '동적 스케줄', 'Virtual Thread 주기 작업'],
+    ['03', 'HTTP 상태 수집', '등록 URL 응답 확인'],
+    ['04', 'JPA 이력 비교', '최신 상태와 현재 응답 비교'],
+    ['05', '상태 전이 감지', '동일 상태와 변경 상태 분기'],
+    ['06', '조건부 Gemini', '변경 시 분석·동일 시 가이드 재사용'],
+    ['07', '3D 상태 표현', 'HTTP 상태와 AI 가이드 연결'],
+  ] as const
+
+  return (
+    <div className="aura-print-layout">
+      <article className="aura-print-sheet aura-print-cover-sheet">
+        <section className="aura-print-index" aria-label="프로젝트 인덱스">
+          <header><p>SELECTED WORK · 02</p><h1>프로젝트 인덱스</h1></header>
+          <div>
+            {[project, mzProject].map((item, index) => (
+              <article key={item.id}>
+                <span>CASE {String(index + 1).padStart(2, '0')}</span>
+                <h2>{item.title}</h2>
+                <dl><div><dt>기간</dt><dd>{item.period}</dd></div><div><dt>형태</dt><dd>{item.type}</dd></div><div><dt>역할</dt><dd>{item.role}</dd></div><div><dt>기술</dt><dd>{item.technologies.slice(0, 4).join(' · ')}</dd></div></dl>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="aura-print-project-cover">
+          <div className="aura-print-bar"><span>CASE 01</span><span>ON-DEMAND AI MONITORING</span></div>
+          <h1>Aura3D</h1>
+          <figure><img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} /><figcaption>{project.image.caption}</figcaption></figure>
+          <dl>{[['구분', project.type], ['기간', project.period], ['역할', project.role], ['기술', project.technologies.join(' · ')]].map(([term, detail]) => <div key={term}><dt>{term}</dt><dd>{detail}</dd></div>)}</dl>
+        </section>
+        <AuraPrintFooter page="04" />
+      </article>
+
+      <article className="aura-print-sheet aura-print-flow-sheet">
+        <header className="aura-print-page-title"><p>PROBLEM &amp; MONITORING FLOW</p><h1>반복 관제와 AI 호출을 분리한 흐름</h1></header>
+        <section className="aura-print-metrics" aria-label="Aura3D 핵심 근거">
+          <article><span>01</span><strong>약 90%</strong><p>반복 상태 테스트 기준 Gemini 호출량 감소</p></article>
+          <article><span>02</span><strong>Java 21 · JPA</strong><p>Virtual Thread 스케줄러와 관제 이력 영속화</p></article>
+          <article><span>03</span><strong>상태 · AI · 3D</strong><p>HTTP 상태와 AI 가이드, 3D 표현 연결</p></article>
+        </section>
+        <div className="aura-print-problem-grid">
+          <section><AuraPrintSectionTitle label="CONTEXT &amp; CONSTRAINTS" title="시작 배경과 제약" />
+            <p>여러 URL의 상태를 한 화면에서 관리하는 도구로 시작했습니다. 대상이 늘어나면서 스캔 작업의 개별 생명주기와 상태 이력, 토큰을 사용하는 AI 분석 요청을 분리할 필요가 생겼습니다.</p>
+            <ol><li><span>01</span><div><strong>중복 실행</strong><p>동일 프로젝트의 스캔이 중복 등록되지 않도록 활성 작업 추적 필요</p></div></li><li><span>02</span><div><strong>개별 제어</strong><p>사용자 요청에 따라 대상별 스캔을 시작하고 중지하는 구조 필요</p></div></li><li><span>03</span><div><strong>호출 분리</strong><p>상태 수집과 Gemini 분석 요청을 같은 주기로 반복하지 않도록 조건 분리</p></div></li><li><span>04</span><div><strong>갱신 기준</strong><p>상태 이력·AI 가이드·3D 화면이 동일한 상태 전이를 기준으로 갱신</p></div></li></ol>
+          </section>
+          <section><AuraPrintSectionTitle label="MONITORING PIPELINE" title="관제 파이프라인" />
+            <ol className="aura-print-pipeline">{pipeline.map(([number, title, detail]) => <li key={number}><span>{number}</span><div><strong>{title}</strong><small>{detail}</small></div></li>)}</ol>
+          </section>
+        </div>
+        <AuraPrintFooter page="05" />
+      </article>
+
+      <article className="aura-print-sheet aura-print-architecture-sheet">
+        <header className="aura-print-page-title"><p>ARCHITECTURE &amp; IMPLEMENTATION</p><h1>아키텍처와 핵심 구현</h1></header>
+        <figure className="aura-print-architecture"><img src={`${import.meta.env.BASE_URL}images/projects/aura3d-architecture.png`} alt="Aura3D 시스템 아키텍처" /><figcaption>React·R3F 관제 화면, Java 21 Virtual Thread 스케줄러, JPA 이력과 상태 전이 기반 Gemini 요청의 연결 구조</figcaption></figure>
+        <section className="aura-print-implementations" aria-label="핵심 구현">
+          <article><span>01</span><h2>관제 대상 REST API</h2><p>등록·조회·삭제와 대상별 스캔 시작·중지 API 구현</p></article>
+          <article><span>02</span><h2>Virtual Thread 스케줄러</h2><p><code>TaskScheduler</code>와 <code>ScheduledFuture</code>로 주기 작업 실행·취소 제어</p></article>
+          <article><span>03</span><h2>중복 실행 방지</h2><p><code>ConcurrentHashMap</code>으로 활성 작업을 추적해 중복 스캔 등록 차단</p></article>
+          <article><span>04</span><h2>상태 전이 기반 Gemini</h2><p>상태 변경 시 분석하고 동일 상태에서는 저장된 가이드 재사용</p></article>
+          <article><span>05</span><h2>JPA 모니터링 이력</h2><p>상태 코드·확인 시점·AI 가이드를 이력으로 저장해 비교 기준 통일</p></article>
+          <article><span>06</span><h2>React·Three.js 시각화</h2><p>HTTP 상태와 대응 정보를 연결해 관제 데이터를 3D 비서 상태로 표현</p></article>
+        </section>
+        <figure className="aura-print-erd"><img src={`${import.meta.env.BASE_URL}images/projects/aura3d-erd.png`} alt="Aura3D 데이터베이스 ERD" /><figcaption>관제 대상과 상태 코드·확인 시점·AI 가이드를 1:N 모니터링 이력으로 관리</figcaption></figure>
+        <AuraPrintFooter page="06" />
+      </article>
+
+      <article className="aura-print-sheet aura-print-validation-sheet">
+        <header className="aura-print-page-title"><p>VALIDATION, RESULT &amp; LIMITS</p><h1>검증 결과와 남은 한계</h1></header>
+        <figure className="aura-print-usage"><img src={`${import.meta.env.BASE_URL}images/projects/aura3d-api-usage.png`} alt="Gemini API 사용량 테스트 화면" /><figcaption>상태 전이 기반 호출 제어 적용 후 Gemini API 요청 수를 사용량 대시보드에서 확인</figcaption></figure>
+        <section className="aura-print-comparison"><AuraPrintSectionTitle label="BEFORE / AFTER" title="호출 제어 전후 비교" />
+          <div role="table"><div role="row"><strong role="columnheader">비교 항목</strong><strong role="columnheader">적용 전</strong><strong role="columnheader">적용 후</strong></div><div role="row"><span role="cell">분석 조건</span><p role="cell">반복 상태 확인 시 분석 요청</p><p role="cell">상태 전이 시 호출·동일 상태 가이드 재사용</p></div><div role="row"><span role="cell">시간당 호출량</span><p role="cell">약 1,000회</p><p role="cell"><strong>약 100회</strong><small>반복 상태 테스트 기준 약 90% 감소</small></p></div><div role="row"><span role="cell">요청 비용</span><p role="cell">반복 요청·응답 토큰 사용</p><p role="cell">불필요한 요청·응답 토큰 사용 억제</p></div></div>
+        </section>
+        <div className="aura-print-validation-grid">
+          <section><AuraPrintSectionTitle label="VERIFIED" title="검증한 핵심 동작" /><ul><li>관제 대상 등록·조회·삭제</li><li>대상별 스캔 시작·중지</li><li>동일 프로젝트 중복 작업 방지</li><li>상태 변화에 따른 Gemini 호출 분기</li><li>HTTP 상태와 AI 가이드의 3D 표현 연결</li></ul></section>
+          <section><AuraPrintSectionTitle label="LIMITS &amp; NEXT" title="한계와 개선 예정" /><ul><li>약 90% 감소는 반복 상태 테스트 결과로, 운영 트래픽에서 추가 검증 필요</li><li><code>ConcurrentHashMap</code> 기반 활성 작업 추적은 단일 애플리케이션 범위</li><li>장기 부하와 실패·재시작 상황의 작업 복구 시나리오는 추가 검증 필요</li></ul></section>
+        </div>
+        <AuraPrintFooter page="07" />
+      </article>
+    </div>
+  )
+}
+
+function AuraPrintSectionTitle({ label, title }: { label: string; title: string }) {
+  return <header className="aura-print-section-title"><p>{label}</p><h2>{title}</h2></header>
+}
+
+function AuraPrintFooter({ page }: { page: string }) {
+  return <footer className="print-sheet-footer"><span>KWON HYUNJAE · AURA3D</span><span>{page} / 10</span></footer>
 }
 
 type ChapterHeadingProps = { number: string; title: string; id: string }

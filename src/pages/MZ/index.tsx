@@ -12,7 +12,11 @@ const chapters = [
   { id: 'mz-deployment', label: '배포·팀 리딩' },
 ] as const
 
-function MZ() {
+type MZProps = { portfolioPrint?: boolean }
+
+function MZ({ portfolioPrint = false }: MZProps) {
+  if (portfolioPrint) return <MZPrintLayout />
+
   return (
     <article className="project-detail">
       <header className="detail-hero">
@@ -135,6 +139,63 @@ function MZ() {
       </div>
     </article>
   )
+}
+
+function MZPrintLayout() {
+  return (
+    <div className="mz-print-layout">
+      <article className="mz-print-sheet mz-print-overview-sheet">
+        <header className="mz-print-bar"><span>CASE 02</span><span>RESTAURANT INFORMATION PLATFORM</span></header>
+        <section className="mz-print-overview">
+          <h1>MZ 전국 맛집 정보 플랫폼</h1>
+          <figure><img src={`${import.meta.env.BASE_URL}${project.image.src}`} alt={project.image.alt} /><figcaption>{project.image.caption}</figcaption></figure>
+          <dl>{[['구분', project.type], ['기간', project.period], ['역할', project.role], ['기술', project.technologies.join(' · ')]].map(([term, detail]) => <div key={term}><dt>{term}</dt><dd>{detail}</dd></div>)}</dl>
+        </section>
+        <section className="mz-print-metrics" aria-label="MZ 프로젝트 핵심 정보">
+          <article><span>01</span><strong>4인</strong><p>팀 프로젝트 · 팀장</p></article>
+          <article><span>02</span><strong>2개 검색축</strong><p>지역·카테고리 동적 복합 검색</p></article>
+          <article><span>03</span><strong>2계층 배포</strong><p>EC2 애플리케이션 · RDS DB 분리</p></article>
+        </section>
+        <div className="mz-print-overview-grid">
+          <section><MZPrintSectionTitle label="PROBLEM &amp; SERVICE FLOW" title="프로젝트 문제와 서비스 흐름" /><p>지역 정보에 익숙하지 않은 해외 관광객이 전국 음식점을 지역·카테고리로 검색하고, 결과 목록과 지도 위치를 같은 흐름에서 비교하도록 데이터 조회부터 화면 탐색까지 연결했습니다.</p><ol><li>지역·카테고리 조건 선택</li><li>MyBatis 동적 SQL 조회</li><li>OFFSET/FETCH 페이지 반환</li><li>목록과 Kakao 지도 마커 연결</li></ol></section>
+          <section><MZPrintSectionTitle label="MY ROLE" title="팀장 및 데이터 계층 담당" /><ul><li>개발 일정·역할·Git 브랜치 조율</li><li>Oracle DB 설계와 데이터 수집</li><li>MyBatis SQL Mapper와 전체 SQL 전담</li><li>CRUD·복합 검색·페이징 구현</li><li>Kakao Map API 연동과 AWS 배포</li></ul></section>
+        </div>
+        <MZPrintFooter page="08" />
+      </article>
+
+      <article className="mz-print-sheet mz-print-data-sheet">
+        <header className="aura-print-page-title"><p>DATA MODEL &amp; SEARCH</p><h1>관계형 데이터와 동적 검색 구현</h1></header>
+        <section className="mz-print-implementations" aria-label="MZ 핵심 구현">
+          <article><span>01</span><h2>Oracle 관계형 데이터 모델</h2><p>음식점·지역·카테고리와 회원·리뷰·북마크 도메인의 관계를 설계해 검색과 서비스 기능의 기준을 구성</p></article>
+          <article><span>02</span><h2>MyBatis SQL Mapper</h2><p>Mapper와 CRUD·검색 SQL 전체를 작성하고 선택 조건을 동적 SQL로 통합</p></article>
+          <article><span>03</span><h2>지역·카테고리 복합 검색</h2><p>단일 또는 복수 조건을 같은 조회 흐름에서 처리하고 검색 결과를 목록과 지도에 전달</p></article>
+          <article><span>04</span><h2>OFFSET/FETCH 페이징</h2><p>Oracle 조회 범위를 제어해 검색 결과를 페이지 단위로 안정적으로 반환</p></article>
+        </section>
+        <section className="mz-print-ownership"><MZPrintSectionTitle label="OWNERSHIP" title="팀 데이터 모델과 본인 기여 구분" />
+          <div><article><h3>팀 전체 데이터 모델</h3><p>Account, Restaurant, Area, Category, Review, Bookmark, Img, Notice 도메인이 회원·음식점·리뷰 기능을 함께 지원하는 관계형 구조</p></article><article><h3>본인 담당 범위</h3><p>Oracle DB 설계·데이터 수집, MyBatis Mapper와 전체 SQL 작업, CRUD·복합 검색·OFFSET/FETCH 페이징 전담</p></article></div>
+        </section>
+        <figure className="mz-print-erd"><img src={`${import.meta.env.BASE_URL}images/projects/mz-erd.jpg`} alt="MZ 데이터베이스 ERD" /><figcaption>개발 단계 ERD — 음식점·지역·카테고리와 회원·리뷰·북마크 도메인을 연결한 관계형 데이터 구조</figcaption></figure>
+        <MZPrintFooter page="09" />
+      </article>
+
+      <article className="mz-print-sheet mz-print-delivery-sheet">
+        <header className="aura-print-page-title"><p>MAP, CONTRIBUTION &amp; DELIVERY</p><h1>지도 연동과 팀 결과물 통합</h1></header>
+        <section className="mz-print-map"><figure><img src={`${import.meta.env.BASE_URL}images/projects/mz-map-list.png`} alt="Kakao 지도와 음식점 목록 연동 화면" /><figcaption>선택 지역의 지도 마커와 음식점 목록·상세 정보를 함께 제공하는 탐색 화면</figcaption></figure><div><MZPrintSectionTitle label="KAKAO MAP INTEGRATION" title="검색 결과와 지도의 연결" /><ul><li><strong>좌표 변환</strong><span>DB 조회 좌표를 Kakao Map 위치로 변환</span></li><li><strong>지도 마커</strong><span>검색 결과별 음식점을 지도 마커에 매핑</span></li><li><strong>동적 인포윈도우</strong><span>마커 선택 시 음식점 상세 정보를 동적으로 표시</span></li><li><strong>검색 조건 연결</strong><span>지역·카테고리와 페이지 이동 결과를 지도에 반영</span></li></ul></div></section>
+        <section className="mz-print-contribution"><article><MZPrintSectionTitle label="MY CONTRIBUTION" title="본인 기여" /><ul><li>기획·QC, 개발 일정과 Git 브랜치 조율</li><li>Oracle DB 설계·데이터 수집</li><li>MyBatis Mapper와 전체 SQL 전담</li><li>CRUD·복합 검색·페이징</li><li>회원가입 서버 처리와 Kakao Map API 연동</li><li>AWS EC2·Tomcat·RDS 배포</li></ul></article><article><MZPrintSectionTitle label="TEAM SCOPE" title="팀 전체 구현 범위" /><p>다국어 UI, 마이페이지, 리뷰·이미지, 랭킹과 추천 기능은 4인 팀의 역할별 분담 범위입니다. 팀장으로서 기능 브랜치와 결과물을 조율·병합해 하나의 서비스로 통합했습니다.</p></article></section>
+        <section className="mz-print-deployment"><MZPrintSectionTitle label="DEPLOYMENT &amp; RESULT" title="배포와 통합 결과" /><div className="mz-print-deployment-flow"><span>사용자</span><i>→</i><span>EC2 · Tomcat<br />애플리케이션</span><i>→</i><span>RDS · Oracle<br />데이터베이스</span></div><dl><div><dt>서비스 통합</dt><dd>관계형 데이터·복합 검색·페이지 조회·지도 탐색을 하나의 사용자 흐름으로 연결</dd></div><div><dt>팀 리딩</dt><dd>일정·역할 조율과 브랜치 병합으로 기능별 결과물을 하나의 서비스로 통합</dd></div></dl></section>
+        <div className="mz-print-closing"><section><MZPrintSectionTitle label="LIMITS &amp; NEXT" title="한계와 개선 방향" /><ul><li>Java 8·Spring Framework 4·JSP 기반 구조의 현대화 필요</li><li>더 큰 데이터셋에서 복합 검색 쿼리와 인덱스 성능 추가 검증 필요</li><li>Kakao Map API 오류·지연 상황의 사용자 대응 흐름 보강 필요</li></ul></section><section><MZPrintSectionTitle label="CODE &amp; CONTACT" title="코드 확인과 연락처" /><address><a href="https://github.com/HyunJaeGit">github.com/HyunJaeGit</a><a href="mailto:guswo1118@gmail.com">guswo1118@gmail.com</a></address><p>데이터 모델, SQL Mapper, 검색·페이징과 지도 연동 구현 기록을 GitHub에서 확인할 수 있습니다.</p></section></div>
+        <MZPrintFooter page="10" />
+      </article>
+    </div>
+  )
+}
+
+function MZPrintSectionTitle({ label, title }: { label: string; title: string }) {
+  return <header className="aura-print-section-title"><p>{label}</p><h2>{title}</h2></header>
+}
+
+function MZPrintFooter({ page }: { page: string }) {
+  return <footer className="print-sheet-footer"><span>KWON HYUNJAE · MZ PROJECT</span><span>{page} / 10</span></footer>
 }
 
 type ChapterHeadingProps = { number: string; title: string; id: string }

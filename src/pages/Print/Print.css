@@ -10,7 +10,7 @@
 .print-cover-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--accent); color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; }
 .print-cover-meta span:nth-child(2) { text-align: center; }
 .print-cover-meta span:last-child { text-align: right; }
-.print-cover-body { display: grid; grid-template-columns: minmax(230px, 0.42fr) minmax(0, 0.58fr); gap: clamp(28px, 5vw, 56px); padding-top: clamp(24px, 4vw, 40px); }
+.print-cover-body { display: grid; gap: clamp(26px, 4vw, 42px); padding-top: clamp(40px, 7vw, 72px); }
 .print-cover-summary { position: relative; z-index: 1; display: grid; align-content: start; border-top: 2px solid var(--navy); }
 .print-cover-summary section { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .print-cover-summary h2 { margin: 0 0 7px; color: var(--accent); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; }
@@ -25,13 +25,29 @@
 .print-cover-strengths span { color: var(--accent); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; }
 .print-cover-strengths h2 { margin: 0; color: var(--navy); font-size: 0.86rem; }
 .print-cover-strengths p { margin: 5px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.5; word-break: keep-all; }
+.print-cover-profile { max-width: 760px; }
+.print-cover-lead { max-width: 650px; margin: 24px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.7; word-break: keep-all; }
+.print-cover-evidence, .print-cover-index { border-top: 2px solid var(--navy); }
+.print-cover-evidence > h2, .print-cover-index > h2 { margin: 0; padding-block: 11px; color: var(--accent); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; }
+.print-cover-evidence ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+.print-cover-evidence li { display: grid; min-width: 0; gap: 10px; padding: 18px 16px 18px 0; }
+.print-cover-evidence li + li { padding-left: 16px; border-left: 1px solid var(--line); }
+.print-cover-evidence span, .print-cover-index span { color: var(--accent); font-family: var(--font-mono); font-size: 0.66rem; }
+.print-cover-evidence strong { color: var(--navy); font-size: 0.88rem; line-height: 1.55; word-break: keep-all; }
+.print-cover-index > div { display: grid; grid-template-columns: 72px minmax(180px, 0.7fr) minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
+.print-cover-index strong { color: var(--navy); font-size: 1rem; }
+.print-cover-index small { color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; }
+.print-cover-contact { display: flex; flex-wrap: wrap; gap: 10px 28px; font-style: normal; }
+.print-cover-contact a { color: var(--accent); font-family: var(--font-mono); font-size: 0.76rem; text-underline-offset: 4px; }
+.print-sheet-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 4mm; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--font-mono); font-size: 7pt; letter-spacing: 0.04em; }
 
 @media (max-width: 720px) {
   .print-page-toolbar { align-items: stretch; flex-direction: column; padding: 22px; }
   .print-page-toolbar .print-button { width: 100%; }
   .print-document { gap: 72px; }
   .print-document-section + .print-document-section { padding-top: 56px; }
-  .print-cover-body { grid-template-columns: 1fr; }
+  .print-cover-evidence ol { grid-template-columns: 1fr; }
+  .print-cover-evidence li + li { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
   .print-cover-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
 }
 
@@ -41,17 +57,19 @@
   .print-document-section { break-before: page; page-break-before: always; }
   .print-document-section:first-child { break-before: auto; page-break-before: auto; }
   .print-document-section + .print-document-section { padding-top: 0; border-top: 0; }
-  .print-cover { display: grid; min-height: calc(297mm - 20mm); align-content: center; padding: 7mm; }
+  .print-cover { display: grid; min-height: calc(297mm - 20mm); grid-template-rows: auto 1fr auto; padding: 7mm; }
   .print-cover-meta { padding-bottom: 3mm; font-size: 7pt; }
-  .print-cover-body { grid-template-columns: 0.4fr 0.6fr; gap: 7mm; padding-top: 6mm; }
-  .print-cover-summary section { padding-block: 3mm; }
-  .print-cover-summary h2 { font-size: 7pt; }
-  .print-cover-summary p { font-size: 8pt; }
-  .print-cover-profile h1 { font-size: 25pt; }
-  .print-cover-strengths { margin-top: 6mm; }
-  .print-cover-strengths section { padding-block: 2.5mm; }
-  .print-cover-strengths h2 { font-size: 8.5pt; }
-  .print-cover-strengths p { font-size: 8pt; }
+  .print-cover-body { align-content: start; gap: 8mm; padding-top: 20mm; }
+  .print-cover-profile h1 { font-size: 34pt; }
+  .print-cover-lead { max-width: 130mm; margin-top: 4mm; font-size: 11pt; line-height: 1.6; }
+  .print-cover-evidence > h2, .print-cover-index > h2 { padding-block: 2mm; font-size: 7pt; }
+  .print-cover-evidence li { gap: 2mm; padding: 3.5mm 3mm 3.5mm 0; }
+  .print-cover-evidence li + li { padding-left: 3mm; }
+  .print-cover-evidence strong { font-size: 9pt; line-height: 1.45; }
+  .print-cover-index > div { grid-template-columns: 18mm 45mm 1fr; gap: 3mm; padding: 2.5mm 0; }
+  .print-cover-index strong { font-size: 10pt; }
+  .print-cover-index small, .print-cover-contact a { font-size: 8pt; }
+  .print-sheet-footer { align-self: end; }
   .print-document-section:nth-child(4) {
     padding-top: 8mm;
     break-before: auto;

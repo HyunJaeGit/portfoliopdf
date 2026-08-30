@@ -1,28 +1,28 @@
-.portfolio-page { display: grid; gap: clamp(48px, 7vw, 72px); }
+.portfolio-page { display: grid; gap: clamp(34px, 5vw, 50px); }
 .portfolio-intro { width: 100%; }
-.portfolio-document-bar { display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: clamp(36px, 6vw, 58px); padding: 11px 15px; color: #f7f3ed; background: var(--charcoal); font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; }
+.portfolio-document-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: clamp(26px, 4vw, 40px); padding: 11px 15px; color: #f7f3ed; background: var(--charcoal); font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; }
 .portfolio-index { border-top: 2px solid var(--navy); }
-.portfolio-entry { display: grid; grid-template-columns: minmax(260px, 0.35fr) minmax(0, 0.65fr); gap: clamp(24px, 4vw, 46px); padding: clamp(24px, 3vw, 30px); border-bottom: 1px solid var(--line); color: inherit; background: rgba(255, 253, 249, 0.45); text-decoration: none; }
+.portfolio-entry { display: grid; grid-template-columns: minmax(280px, 0.4fr) minmax(0, 0.6fr); gap: clamp(20px, 3vw, 34px); align-items: start; padding: clamp(20px, 2.5vw, 26px); border-bottom: 1px solid var(--line); color: inherit; background: rgba(255, 253, 249, 0.45); text-decoration: none; }
 .portfolio-entry:hover, .portfolio-entry:focus-visible { background: #eee8df; }
 .portfolio-entry:active { background: #e4ddd3; }
 .portfolio-entry figure { align-self: start; margin: 0; }
 .portfolio-entry img { display: block; width: 100%; aspect-ratio: 4 / 3; border: 1px solid var(--line); object-fit: cover; object-position: center; }
 .portfolio-entry .aura3d-entry-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #050505; }
 .portfolio-entry .mz-entry-visual img { aspect-ratio: 16 / 9; object-fit: contain; background: #f8f5ef; }
-.portfolio-entry figcaption { margin-top: 8px; color: var(--muted); font-size: 0.68rem; }
+.portfolio-entry figcaption { margin-top: 8px; color: var(--muted); font-size: 0.74rem; }
 .portfolio-entry-copy { min-width: 0; }
 .portfolio-entry-heading { display: flex; justify-content: space-between; gap: 18px; }
 .portfolio-entry-heading p { margin: 0; color: var(--accent); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
 .portfolio-entry-heading p:last-child { color: var(--muted); }
 .portfolio-entry h2 { margin: 10px 0 0; color: var(--navy); font-size: clamp(1.45rem, 3vw, 2.1rem); letter-spacing: -0.035em; }
-.portfolio-entry-type { margin: 7px 0 0; color: var(--accent); font-size: 0.75rem; font-weight: 750; }
-.portfolio-entry-problem { display: grid; grid-template-columns: 66px 1fr; gap: 14px; margin: 18px 0 0; color: var(--charcoal); font-size: 0.86rem; line-height: 1.65; word-break: keep-all; }
+.portfolio-entry-type { margin: 7px 0 0; color: var(--accent); font-size: 0.8rem; font-weight: 750; }
+.portfolio-entry-problem { display: grid; grid-template-columns: 76px 1fr; gap: 14px; margin: 14px 0 0; color: var(--charcoal); font-size: 0.92rem; line-height: 1.68; word-break: keep-all; }
 .portfolio-entry-problem strong { color: var(--navy); font-size: 0.75rem; }
-.portfolio-entry dl { display: grid; gap: 8px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
-.portfolio-entry dl div { display: grid; grid-template-columns: 66px 1fr; gap: 14px; }
+.portfolio-entry dl { display: grid; gap: 8px; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.portfolio-entry dl div { display: grid; grid-template-columns: 76px 1fr; gap: 14px; }
 .portfolio-entry dt { color: var(--navy); font-size: 0.73rem; font-weight: 800; }
 .portfolio-entry dd { margin: 0; color: var(--muted); font-size: 0.76rem; line-height: 1.58; word-break: keep-all; }
-.portfolio-entry-cta { display: inline-flex; gap: 9px; margin-top: 20px; color: var(--accent); font-size: 0.79rem; }
+.portfolio-entry-cta { display: inline-flex; gap: 9px; margin-top: 14px; color: var(--accent); font-size: 0.79rem; }
 
 @media (max-width: 720px) {
   .portfolio-document-bar { align-items: flex-start; flex-direction: column; gap: 5px; }
@@ -36,8 +36,8 @@
 }
 
 @media screen {
-  .portfolio-entry dt { font-size: 0.76rem; }
-  .portfolio-entry dd { font-size: 0.8rem; }
+  .portfolio-entry dt { font-size: 0.8rem; }
+  .portfolio-entry dd { font-size: 0.86rem; line-height: 1.62; }
   .portfolio-entry-cta { font-size: 0.82rem; }
 }
 
